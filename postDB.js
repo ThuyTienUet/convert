@@ -5,7 +5,7 @@ let async = require("async");
 fs.readFile('./json/apiOnl.json', 'utf8', function (err, data) {
   let obj = JSON.parse(data);
   async.forEachOfSeries(obj, (value, key, callback) => {
-    doPost('http://localhost:3000/apiOnline', value, function (res) {
+    doPost('http://localhost:3000/wiOnline', value, function (res) {
       callback();
     });   
   }, err => {
