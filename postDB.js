@@ -2,10 +2,10 @@ let fs = require('fs');
 let request = require('request');
 let async = require("async");
 
-fs.readFile('./json/apiOnl.json', 'utf8', function (err, data) {
+fs.readFile('./json/apiSOM.json', 'utf8', function (err, data) {
   let obj = JSON.parse(data);
   async.forEachOfSeries(obj, (value, key, callback) => {
-    doPost('http://localhost:3000/wiOnline', value, function (res) {
+    doPost('http://localhost:3000/apiSOM', value, function (res) {
       callback();
     });   
   }, err => {
