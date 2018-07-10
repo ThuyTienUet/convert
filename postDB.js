@@ -2,10 +2,10 @@ let fs = require('fs');
 let request = require('request');
 let async = require("async");
 
-fs.readFile('./json/apiCom.json', 'utf8', function (err, data) {
+fs.readFile('./json/apiOnl.json', 'utf8', function (err, data) {
   let obj = JSON.parse(data);
   async.forEachOfSeries(obj, (value, key, callback) => {
-    doPost('http://localhost:3000/apiCom', value, function (res) {
+    doPost('http://localhost:3000/apiOnline', value, function (res) {
       callback();
     });   
   }, err => {
