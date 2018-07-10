@@ -1,0 +1,245 @@
+[
+    {
+        "note": "",
+        "route": "/login",
+        "method": "POST",
+        "payloadParams": {"idUser": "", "password": "" },
+        "samplePayload": {},
+        "response": {"success": "", "token": ""},
+        "name": "login"
+    },
+    {
+        "note": "override = true: override existing well if duplicate welloverride = null: create new well if duplicate well",
+        "route": "/upload/lases",
+        "method": "POST",
+        "payloadParams": {"token": "", "file": "", "override": "" },
+        "samplePayload": {},
+        "response": {"code": 200,"reason": "UPLOAD FILES SUCCESS","content": [{"idWell": 3,"start": "1146.0480","stop": "2108.3016","step": "0.1524","name": "02/97-DD-1X","username": "admin","updatedAt": "2017-11-29T09:02:49.121Z","createdAt": "2017-11-29T09:02:49.121Z"}]},
+        "name": "upload las files"
+    },
+    {
+        "note": "",
+        "route": "/user/info",
+        "method": "POST",
+        "payloadParams": "token",
+        "samplePayload": {"token": ""},
+        "response": {    "code": 200,    "reason": "GET USER INFOR SUCCESS",    "content": {        "username": "admin",        "password": "c4ca4238a0b923820dcc509a6f75849b",        "islogin": false,        "role": 1,        "createdAt": "2017-11-29T08:02:13.000Z",        "updatedAt": "2017-11-29T08:02:13.000Z"    }},
+        "name": "get user info"
+    },
+    {
+        "note": "",
+        "route": "/user/well/new",
+        "method": "POST",
+        "payloadParams": {},
+        "samplePayload": {},
+        "response": "",
+        "name": "create new well"
+    },
+    {
+        "note": "",
+        "route": "/user/well/info",
+        "method": "POST",
+        "payloadParams": {"token": "", "idWell": "" },
+        "samplePayload": {"token": "","idWell": 1},
+        "response": {    "code": 200,    "reason": "SUCCESSFULLY GET WELL INFOR",    "content": {        "idWell": 4,        "name": "02/97-DD-2X",        "start": 1119.835,        "stop": 2184.806,        "step": 0.1524,        "UWI": null,        "API": null,        "createdAt": "2017-11-29T08:10:22.000Z",        "updatedAt": "2017-11-29T08:10:22.000Z",        "username": "admin"    }},
+        "name": "get well info"
+    },
+    {
+        "note": "",
+        "route": "/user/well/edit",
+        "method": "POST",
+        "payloadParams": {},
+        "samplePayload": {},
+        "response": "",
+        "name": "edit an existing well"
+    },
+    {
+        "note": "",
+        "route": "/user/well/delete",
+        "method": "POST",
+        "payloadParams": {"token": "", "idWell": "" },
+        "samplePayload": {"token": "","idWell": 1},
+        "response": {    "code": 200,    "reason": "SUCCESSFULLY DELETE WELL",    "content": {        "idWell": 2,        "name": "02_97-DD-1X",        "start": 1146.048,        "stop": 2108.3016,        "step": 0.1524,        "UWI": null,        "API": null,        "createdAt": "2017-11-29T08:57:52.000Z",        "updatedAt": "2017-11-29T08:57:52.000Z",        "username": "admin"    }},
+        "name": "delete the well"
+    },
+    {
+        "note": "",
+        "route": "/user/well/addDatasets",
+        "method": "POST",
+        "payloadParams": {"token": "", "idWell": "" , "file": ""},
+        "samplePayload": {},
+        "response": {    "code": 200,    "reason": "SUCCESSFULLY ADD DATASETS",    "content": [        {            "idWell": 1,            "name": "02/97-DD-1X",            "start": 1146.048,            "stop": 2108.3016,            "step": 0.1524,            "UWI": null,            "API": null,            "createdAt": "2017-11-29T09:14:50.000Z",            "updatedAt": "2017-11-29T09:14:50.000Z",            "username": "admin"        }    ]},
+        "name": "upload files and import dataset into existing well"
+    },
+    {
+        "note": "",
+        "route": "/user/well/copyDatasets",
+        "method": "POST",
+        "payloadParams": {"token": "", "datasets": "", "idWell": "" },
+        "samplePayload": {        "token" : "",        "idWell": 2,        "datasets" : [{            "idDataset": 1,            "name": "02/97-DD-1X",            "numberOfSample": 0,            "unit": "M",            "top": 0,            "bottom": 0,            "step": 0,            "createdAt": "2017-11-29T09:14:50.000Z",            "updatedAt": "2017-11-29T09:14:50.000Z",            "idWell": 1        }]        },
+        "response": {    "code": 200,    "reason": "SUCCESSFULLY COPY DATASETS",    "content": [        {            "idDataset": 3,            "name": "SNS_5AP",            "numberOfSample": 0,            "unit": "M",            "top": 0,            "bottom": 0,            "step": 0,            "idWell": 2,            "updatedAt": "2017-11-29T07:18:08.124Z",            "createdAt": "2017-11-29T07:18:08.124Z"        }    ]},
+        "name": "copy datasets from a well to another"
+    },
+    {
+        "note": "",
+        "route": "/user/well/exportHeader",
+        "method": "POST",
+        "payloadParams": {"idWells": [] },
+        "samplePayload": {"idWells" : [1,2,3]},
+        "response": "",
+        "name": "empty array for all wells"
+    },
+    {
+        "note": "",
+        "route": "/user/wells",
+        "method": "POST",
+        "payloadParams": {"token": ""},
+        "samplePayload": {"token":""},
+        "response": {    "code": 200,    "reason": "SUCCESSFULLY GET WELLS",    "content": [        {            "idWell": 1,            "name": "02/97-DD-1X",            "start": 1146.048,            "stop": 2108.3016,            "step": 0.1524,            "UWI": null,            "API": null,            "createdAt": "2017-11-29T09:14:50.000Z",            "updatedAt": "2017-11-29T09:14:50.000Z",            "username": "admin"        }    ]},
+        "name": "get wells of the user"
+    },
+    {
+        "note": "",
+        "route": "/user/well/dataset/new",
+        "method": "POST",
+        "payloadParams": {},
+        "samplePayload": {},
+        "response": "",
+        "name": "create new dataset"
+    },
+    {
+        "note": "",
+        "route": "/user/well/dataset/info",
+        "method": "POST",
+        "payloadParams": {"token": "", "idDataset": "" },
+        "samplePayload": {"token": "","idDataset":1},
+        "response": {    "code": 200,    "reason": "SUCCESSFULLY GET DATASET INFO",    "content": {        "idDataset": 1,        "name": "02/97-DD-1X",        "numberOfSample": 0,        "unit": "M",        "top": 0,        "bottom": 0,        "step": 0,        "createdAt": "2017-11-29T09:14:50.000Z",        "updatedAt": "2017-11-29T09:14:50.000Z",        "idWell": 1    }},
+        "name": "get the dataset infomation"
+    },
+    {
+        "note": "",
+        "route": "/user/well/dataset/edit",
+        "method": "POST",
+        "payloadParams": {},
+        "samplePayload": {},
+        "response": "",
+        "name": "edit an existing dataset"
+    },
+    {
+        "note": "",
+        "route": "/user/well/dataset/detete",
+        "method": "POST",
+        "payloadParams": {"token": "", "idDataset": "" },
+        "samplePayload": {"token": "","idDataset":1},
+        "response": {    "code": 200,    "reason": "DATASET DELETED",    "content": {        "idDataset": 1,        "name": "02/97-DD-1X",        "numberOfSample": 0,        "unit": "M",        "top": 0,        "bottom": 0,        "step": 0,        "createdAt": "2017-11-29T09:14:50.000Z",        "updatedAt": "2017-11-29T09:14:50.000Z",        "idWell": 1    }},
+        "name": "delete the dataset"
+    },
+    {
+        "note": "",
+        "route": "/user/well/datasets",
+        "method": "POST",
+        "payloadParams": {"token": "", "idWell": "" },
+        "samplePayload": {"token": "","idWell":1},
+        "response": {    "code": 200,    "reason": "SUCCESSFULLY GET DATASTES",    "content": [        {            "idDataset": 2,            "name": "02_97-DD-1X",            "numberOfSample": 0,            "unit": "M",            "top": 0,            "bottom": 0,            "step": 0,            "createdAt": "2017-11-29T09:14:50.000Z",            "updatedAt": "2017-11-29T09:14:50.000Z",            "idWell": 2        }    ]},
+        "name": "get datasets of the well"
+    },
+    {
+        "note": "",
+        "route": "/user/well/dataset/curve/new",
+        "method": "POST",
+        "payloadParams": {},
+        "samplePayload": {},
+        "response": {},
+        "name": "create a new curve"
+    },
+    {
+        "note": "",
+        "route": "/user/well/dataset/curve/info",
+        "method": "POST",
+        "payloadParams": {"token": "", "idCurve": "" },
+        "samplePayload": {"token": "","idCurve" : 1},
+        "response": {    "code": 200,    "reason": "SUCCESSFULLY GET CURVE INFOR",    "content": {        "idCurve": 20,        "name": "HCAL",        "path": "60cee3a0/69a2ca11/2ee7288e/c2b47e18/HCAL.txt",        "unit": "IN",        "startDepth": 0,        "stopDepth": 0,        "step": 0,        "createdAt": "2017-11-29T09:14:50.000Z",        "updatedAt": "2017-11-29T09:14:50.000Z",        "idDataset": 2    }},
+        "name": "get curve info"
+    },
+    {
+        "note": "response is a stream of data",
+        "route": "/user/well/dataset/curve/data",
+        "method": "POST",
+        "payloadParams": {"token": "", "idCurve": "", "unit": ""},
+        "samplePayload": {"token": "","idCurve" : 1,"unit":"M"},
+        "response": {},
+        "name": "get curve data"
+    },
+    {
+        "note": "",
+        "route": "/user/well/dataset/curve/edit",
+        "method": "POST",
+        "payloadParams": {},
+        "samplePayload": {},
+        "response": {},
+        "name": "edit curve"
+    },
+    {
+        "note": "",
+        "route": "/user/well/dataset/curve/delete",
+        "method": "POST",
+        "payloadParams": {"token": "", "idCurve": ""},
+        "samplePayload": {"token": "","idCurve" : 1},
+        "response": {    "code": 200,    "reason": "SUCCESSFULLY DELETE CURVE",    "content": {        "idCurve": 30,        "name": "TNPH",        "path": "b5d800ec/83e2f376/24529d36/7386b1ca/TNPH.txt",        "unit": "V/V",        "startDepth": 0,        "stopDepth": 0,        "step": 0,        "createdAt": "2017-11-29T09:14:50.000Z",        "updatedAt": "2017-11-29T09:14:50.000Z",        "idDataset": 2    }},
+        "name": "delete curve"
+    },
+    {
+        "note": "",
+        "route": "/user/well/dataset/curves",
+        "method": "POST",
+        "payloadParams": {"token": "", "idDataset": "" },
+        "samplePayload": {"token": "","idDataset" : 1},
+        "response": {    "code": 200,    "reason": "SUCCESSFULLY GET CURVES",    "content": [        {            "idCurve": 16,            "name": "DTCO3",            "path": "f318aad2/674942ad/0450c0e7/8a59b240/DTCO3.txt",            "unit": "US/F",            "startDepth": 0,            "stopDepth": 0,            "step": 0,            "createdAt": "2017-11-29T09:14:50.000Z",            "updatedAt": "2017-11-29T09:14:50.000Z",            "idDataset": 2        }    ]},
+        "name": "get curves of the dataset"
+    },
+    {
+        "note": "",
+        "route": "/export/las2",
+        "method": "POST",
+        "payloadParams": {"token": "", "idObjs": "" },
+        "samplePayload": {"token": "aaa","idObjs": [{        "idWell": 2,        "datasets": [{                "idDataset": 2,                 "idCurves":[1,2]        }]}]},
+        "response": {"datasetName":"W40","wellName":"W4","path":"exportsthuy4W40_W4_1522655496979.las","fileName": "W40_W4_1522655496979.las"},
+        "name": "export well to las 2.0 file"
+    },
+    {
+        "note": "",
+        "route": "/export/las3",
+        "method": "POST",
+        "payloadParams": {"token": "", "idObjs": "" },
+        "samplePayload": {"token": "aaa","idObjs": [{        "idWell": 2,        "datasets": [{                "idDataset": 2,                 "idCurves":[1,2]        }]}]},
+        "response": {    "wellName":"W4",    "path":"exportsthuy4W40_W4_1522655496979.las",    "fileName": "W40_W4_1522655496979.las"},
+        "name": "export well to las 3.0 file"
+    },
+    {
+        "note": "",
+        "route": "import/project/well",
+        "method": "POST",
+        "payloadParams": {"token": "","name": "", "idProject" : "" },
+        "samplePayload": {"token": "aaa","name": "W4","idProject": 1},
+        "response": {    "createdAt":"2018-07-06T02:26:56.000Z","filename":"W4", "idWell" :357,"name":"W4", "updatedAt":"2018-07-06T02:26:56.000Z","username":"thuy"},
+        "name": "import a well from project to inventory"
+    },
+    {
+        "note": "",
+        "route": "import/project/dataset",
+        "method": "POST",
+        "payloadParams": {"token": "", "datasets": "" },
+        "samplePayload": {   "token": "aaa",   "datasets":[{      "idDataset": 1,      "idDesWell": 357,      "name": "W40",      "idWell": 1   }]},
+        "response": {      "bottom": "2184.8064",  "createdAt":"2018-07-06T02:26:56.000Z",  "idDataset":454,  "idWell":357,  "name":"W40",  "numberOfSample":0,  "step":"0.1524",  "top":"1119.8352",  "unit": "M",  "updatedAt":"2018-07-06T02:26:56.000Z"   },
+        "name": "import a dataset from project to inventory"
+    },
+    {
+        "note": "",
+        "route": "import/project/well",
+        "method": "POST",
+        "payloadParams": {"token": "", "curves": "" },
+        "samplePayload": {  "token": "aaa",   "curves": [{     "idCurve": 1,     "name": "DTCO3",     "wellName": "W4",    "datasetName": "W4",    "idProject": 1  }]},
+        "response": {     "createdAt":"2018-07-05T10:48:13.000Z", "idCurve":213,  "idDataset":67, "name":"ECGR", "updatedAt":"2018-07-05T10:48:13.000Z"},
+        "name": "import a curve from project to inventory"
+    }
+]

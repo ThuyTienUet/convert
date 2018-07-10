@@ -1,0 +1,1976 @@
+[
+    {
+        "name": "Sample",
+        "method": "POST",
+        "route": "/hello",
+        "payloadParams": {"key1" : "String", "key2": "Number(*)", "key3": "file"},
+        "samplePayload": {"key1" : "sample", "key2": 1234,  "key3": "file"},
+        "note": "API mẫu. (*) không bắt buộc truyền vào.",
+        "response": {}
+    },
+    {
+        "name": "Upload file",
+        "method": "POST",
+        "route": "/file",
+        "payloadParams": { "file" : "file (type file .las, .asc, .csv)", "id_project" : "Number", "id_well" : "Number(*)", "id_dataset" : "number(*)" },
+        "samplePayload": { "file" : "file", "id_project" : 1, "id_well" : 1 , "id_dataset" : 1 },
+        "note": "API upload file lên server có 2 TH: 1. Thêm file vào well đã tạo (cần id_well); 2. Thêm file và tạo well mới (ko cần id_well)      2.1. Thêm file vào well và dataset đã tạo (cần id_well và id_dataset)      2.2. Thêm file và tạo dataset mới (cần id_well, ko cần id_dataset).   (*) không bắt buộc truyền vào.",
+        "response": {}
+    },
+    {
+        "name": "Tạo Project",
+        "method": "POST",
+        "route": "/project/new",
+        "payloadParams": { "name": "String", "company": "String", "department": "String", "description": "String" },
+        "samplePayload": { "name": "Test-Project", "company": "UET", "department": "FIT", "description": "blablabla" },
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "Sửa Project",
+        "method": "POST",
+        "route": "/project/edit",
+        "payloadParams": { "idProject": "Number", "name": "String(*)", "company": "String(*)", "department": "String(*)", "description": "String (*)" },
+        "samplePayload": { "idProject": 1, "name": "Test-Project-change || null", "company": "UET || null",  "department": "ABC Department || null", "description": "This is a description || null" },
+        "note": "(*) không bắt buộc truyền vào.",
+        "response": {}
+    },
+    {
+        "name": "Xóa Project",
+        "method": "DELETE",
+        "route": "/project/delete",
+        "payloadParams": { "idProject": "Number"},
+        "samplePayload": { "idProject": 1 },
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "List Project",
+        "method": "POST",
+        "route": "/project/list",
+        "payloadParams": {},
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "Info Project",
+        "method": "POST",
+        "route": "/project/info",
+        "payloadParams": { "idProject": "Number" },
+        "samplePayload": { "idProject" : 1 },
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "Full Info Project",
+        "method": "POST",
+        "route": "/project/fullinfo",
+        "payloadParams": { "idProject": "Number" },
+        "samplePayload": { "idProject" : 1},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "List wells of a project with filter",
+        "method": "POST",
+        "route": "/project/well/list",
+        "payloadParams": { "idProject": "Number", "start": "Number (*)", "limit": "Number (*)", "forward": "Boolean (*)", "match": "String (*)" },
+        "samplePayload": { "idProject": 1, "start": 10, "limit": 20, "forward": true },
+        "note": "- Nếu không có start --> start = 0- Nếu không có limit --> limit = 50- Nếu không có forward --> forward = true. Nếu forward = false thì list các well từ id = start tới id = start - limit - Nếu không có match --> match ='*' (match tất cả các well có wellname khớp với'match' (không phân biệt hoa thường)- Order well theo thứ tự tăng/giảm dần của idWell** Tham khao: https://gyazo.com/49677127ca48c5edc024799f742df967. (*) không bắt buộc truyền vào.",
+        "response": {}
+    },
+    {
+        "name": "Tạo Well",
+        "method": "POST",
+        "route": "/project/well/new",
+        "payloadParams": { "idWell" : "Number", "idProject": "Number", "name": "String", "topDepth": "String", "bottomDepth": "String", "step": "String" },
+        "samplePayload": { "idWell" : 1, "idProject": 1, "name": "Ex-Well", "topDepth": "10", "bottomDepth": "50", "step": "30" },
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "Sửa Well",
+        "method": "POST",
+        "route": "/project/well/edit",
+        "payloadParams": { "idWell" : "Number", "idProject": "Number (*)", "name": "String (*)", "topDepth": "String (*)", "bottomDepth": "String (*)", "step": "String (*)" },
+        "samplePayload": {  "idWell": 1, "idProject": 1 ,  "name": "Ex-Well-change || null ",  "topDepth": "20 || null",  "bottomDepth": "80 || null", "step": "30 || null" },
+        "note": "(*) không bắt buộc truyền vào.",
+        "response": {}
+    },
+    {
+        "name": "Xóa Well",
+        "method": "DELETE",
+        "route": "/project/well/delete",
+        "payloadParams": { "idWell" : "Number" },
+        "samplePayload": { "idWell": 1 },
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "Info Well",
+        "method": "POST",
+        "route": "/project/well/info",
+        "payloadParams": { "idWell": "Number" },
+        "samplePayload": { "idWell": 1 },
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "Export Well to another project",
+        "method": "POST",
+        "route": "/project/well/export-to-project",
+        "payloadParams": { "idWell": "int", "idDesProject": "int" },
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "Get well headers of well",
+        "method": "POST",
+        "route": "/project/well/get-well-header",
+        "payloadParams": { "idWell": "Number" },
+        "samplePayload": {},
+        "note": "well header array",
+        "response": {}
+    },
+    {
+        "name": "update one well header",
+        "method": "POST",
+        "route": "/project/well/update-well-header",
+        "payloadParams": {},
+        "samplePayload": {},
+        "note": "2 trường hợp: 1. Update theo idWellHeader (idWellHeader: num,value: value)2. Update theo header value (header: string, value: string) . header which updated or created",
+        "response": {}
+    },
+    {
+        "name": "bulk update well header",
+        "method": "POST",
+        "route": "/project/well/bulk-update-well-header",
+        "payloadParams": { "idWell": "num", "headers": "Array (header: string, value: value)" },
+        "samplePayload": {},
+        "note": "header array with result = UPDATED,CREATED,ERROR...",
+        "response": {}
+    },
+    {
+        "name": "Tạo Dataset",
+        "method": "POST",
+        "route": "/prooject/well/dataset/new",
+        "payloadParams": { "idWell": "Number", "name": "String", "datasetKey": "String", "datasetLabel": "String" },
+        "samplePayload": { "idWell" : 1, "name" : "dataset-test", "datasetKey": "Key-test", "datasetLabel": "Label-test" },
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "Sửa Dataset",
+        "method": "POST",
+        "route": "/project/well/dataset/edit",
+        "payloadParams": { "idDataset": "Number", "idWell": "Number (*)", "name": "String (*)", "datasetKey": "String (*)", "datasetLabel": "String (*)" },
+        "samplePayload": { "idDataset" : 1, "idWell" : 1 , "name" : "dataset-test || null", "datasetKey": "Key-test || null", "datasetLabel": "Label-test || null" },
+        "note": "(*) không bắt buộc truyền vào.",
+        "response": {}
+    },
+    {
+        "name": "Xóa Dataset",
+        "method": "DELETE",
+        "route": "/project/well/dataset/delete",
+        "payloadParams": { "idDataset": "Number" },
+        "samplePayload": { "idDataset" : 1},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "Info Dataset",
+        "method": "POST",
+        "route": "/project/well/dataset/info",
+        "payloadParams": { "idDataset": "Number" },
+        "samplePayload": { "idDataset" : 1 },
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "Tạo Curve",
+        "method": "POST",
+        "route": "/project/well/dataset/curve/new",
+        "payloadParams": { "idDataset": "Number", "name": "String", "dataset": "String", "unit": "String", "initValue": "String" },
+        "samplePayload": { "idDataset": 1, "name": "Ex-Curve", "dataset": "", "unit": "mn/m", "initValue": "30"},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "Sửa Curve",
+        "method": "POST",
+        "route": "/project/well/dataset/curve/edit",
+        "payloadParams": { "idCurve": "Number (*)", "idDataset": "Number", "name": "String (*)", "unit": "String", "initValue": "String" },
+        "samplePayload": { "idCurve": 1, "idDataset": 1, "name": "Curve" , "unit": "mn/m", "initValue": "60" },
+        "note": "(*) không bắt buộc truyền vào.",
+        "response": {}
+    },
+    {
+        "name": "Xóa Curve",
+        "method": "DELETE",
+        "route": "/project/well/dataset/curve/delete",
+        "payloadParams": { "idCurve": "Number" },
+        "samplePayload": { "idCurve": 1},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "Info Curve",
+        "method": "POST",
+        "route": "/project/well/dataset/curve/info",
+        "payloadParams": { "idCurve": "Number" },
+        "samplePayload": { "idCurve": 1},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "Data Curve",
+        "method": "POST",
+        "route": "/project/well/dataset/curve/getData",
+        "payloadParams": { "idCurve": "Number" },
+        "samplePayload": { "idCurve": 1},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "Check curve if existed",
+        "method": "POST",
+        "route": "/project/well/dataset/curve/is-existed",
+        "payloadParams": { "idDataset": "Number", "name": "String" },
+        "samplePayload": {},
+        "note": "",
+        "response": {"code": 200, "reason":"Found curve", "content": { "idCurve": 2, "name": "DTCO3", "unit":"US/F", "initValue":0, "duplicated": 1, "createdAt":"2018-03-20T02:34:26.000Z", "updatedAt":"2018-03-20T02:34:26.000Z", "deletedAt": "null", "idDataset": 1, "idFamily": 892 }}
+    },
+    {
+        "name": "Get parents of curve",
+        "method": "POST",
+        "route": "/project/well/dataset/curve/get-parents",
+        "payloadParams": { "idCurve" : "Number" },
+        "samplePayload": {},
+        "note": "",
+        "response": "well: Object, dataset: object, project: object, curve: object"
+    },
+    {
+        "name": "Tạo Plot",
+        "method": "POST",
+        "route": "/project/well/plot/new",
+        "payloadParams": { "idWell": "Number", "name": "String", "option": "String", "referenceCurve": "Number", "override": "true/false" },
+        "samplePayload": { "idWell": 1, "name": "Ex-Plot",  "option": "blank-plot",  "referenceCurve" : 2 },
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "Sửa Plot",
+        "method": "POST",
+        "route": "/project/well/plot/edit",
+        "payloadParams": { "idPlot": "Number", "idWell": "Number", "name": "String (*)", "option": "String (*)", "referenceCurve": "Number" },
+        "samplePayload": { "idPlot" : 1, "idWell" : 1 , "name" :"Plot-test || null", "option":"Option-test || null", "referenceCurve" : 2 },
+        "note": "(*) không bắt buộc truyền vào.",
+        "response": {}
+    },
+    {
+        "name": "Xóa Plot",
+        "method": "DELETE",
+        "route": "/project/well/plot/delete",
+        "payloadParams": { "idPlot": "Number" },
+        "samplePayload": { "idPlot": 1 },
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "Info Plot",
+        "method": "POST",
+        "route": "/project/well/plot/info",
+        "payloadParams": { "idPlot": "Number" },
+        "samplePayload": { "idPlot": 1 },
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "Tạo Depth - Axis",
+        "method": "POST",
+        "route": "/project/well/plot/depth-axis/new",
+        "payloadParams": { "idPlot": "Number" },
+        "samplePayload": { "idPlot": 4, "showTitle": true, "title":"Depth", "trackBackground":"rgba(255,255,255,0)", "geometryWidth": 60, "orderNum":"a", "justification":"center", "depthType":"", "unitType":"M", "decimals":1 },
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "Xóa Depth - Axis",
+        "method": "DELETE",
+        "route": "/project/well/plot/depth-axis/delete",
+        "payloadParams": { "idDepthAxis": "Number" },
+        "samplePayload": { "idDepthAxis": 4 },
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "Info Depth - Axis",
+        "method": "POST",
+        "route": "/project/well/plot/depth-axis/info",
+        "payloadParams": { "idDepthAxis": "Number", "showTitle": "Boolean", "title":"String", "trackBackground":"String",   "geometryWidth": "Number", "orderNum":"String", "idPlot": "Number", "justification": "String", "depthType": "String", "unitType":"String", "decimals": "Number" },
+        "samplePayload": { "idDepthAxis": 2, "showTitle": "true", "title": "Depth", "trackBackground": "rgba(255,255,255,0)", "geometryWidth": 60, "orderNum":"a", "idPlot": 2, "justification": "center", "depthType":"", "unitType": "M", "decimals": 1 },
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "Tạo Track",
+        "method": "POST",
+        "route": "/project/well/plot/track/new",
+        "payloadParams": { "idPlot": "Number" },
+        "samplePayload": { "idPlot": 4, "orderNum": 1 },
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "Sửa Track",
+        "method": "POST",
+        "route": "/project/well/plot/track/edit",
+        "payloadParams": { "idTrack": "Number", "idPlot": "Number", "orderNum": "Number", "showTitle": "boolean", "title": "String", "topJustification": "(Left,Right,Center)", "bottomJustification": "(Left,Right,Center)", "showLabels": "Boolean", "showValueGrid": "Boolean", "majorTicks": "int", "minorTicks": "int", "showDepthGrid": "boolean", "width": "float", "color": "String", "showEndLabels": "Boolean" },
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "Xóa Track",
+        "method": "DELETE",
+        "route": "/project/well/plot/track/delete",
+        "payloadParams": { "idTrack": "Number" },
+        "samplePayload": { "idTrack": 1},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "Info Track",
+        "method": "POST",
+        "route": "/project/well/plot/track/info",
+        "payloadParams": { "idTrack": "Number" },
+        "samplePayload": { "idTrack": 1},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "Tạo 1 line",
+        "method": "POST",
+        "route": "/project/well/plot/track/line/new",
+        "payloadParams": { "idTrack": "Number", "idCurve": "Number" },
+        "samplePayload": { "idTrack": 1,  "idCurve": 2 },
+        "note": "",
+        "response": { "code": 200, "reason":"Create new line success", "content": { "showHeader": "true", "showDataset": "false", "minValue": 0, "maxValue": 200, "autoValueScale": "false", "displayMode":"Line","wrapMode":"None","blockPosition":"None", "ignoreMissingValues": "false", "displayType": "Linear", "displayAs":"Normal", "lineStyle":"[0]", "lineWidth": 1, "lineColor":"red", "idLine": "5", "idTrack": "6", "idCurve": "6", "updatedAt": "2017-07-25T02:18:24.273Z", "createdAt":"2017-07-25T02:18:24.273Z" }}
+    },
+    {
+        "name": "Xóa 1 line",
+        "method": "DELETE",
+        "route": "/project/well/plot/track/line/delete",
+        "payloadParams": { "idLine" : "Number" },
+        "samplePayload": { "idLine": 1 },
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "Sửa 1 line",
+        "method": "POST",
+        "route": "/project/well/plot/track/line/edit",
+        "payloadParams": { "idLine": "", "idTrack": "", "minValue": "", "maxValue": "", "displayMode": "", "blockPosition": "", "displayType": "", "lineStyle": "(*)", "lineWidth": "(*)", "lineColor": "(*)", "showHeader": "", "showDataset": "", "autoValueScale": "", "wrapMode": "", "ignoreMissingValues": "", "displayAs": "", "alias": "", "symbolname": "(*)", "symbolSize": "(*)", "symbolStrokeStyle": "(*)", "symbolFillStyle": "(*)", "symbolLineWidth": "(*)", "symbolLineDash": "(*)" },
+        "samplePayload": { "idLine": "5","idTrack": "6", "showHeader": "true", "showDataset": "false", "minValue": 0, "maxValue": 200, "autoValueScale": "false", "displayMode":"Line", "wrapMode":"None", "blockPosition":"None", "ignoreMissingValues": "false", "displayType":"Linear", "displayAs":"Normal", "lineStyle":"[0]", "lineWidth": 1, "lineColor":"red", "alias":"DTCO3", "symbolname":"circle", "symbolSize": 4, "symbolStrokeStyle": "blue", "symbolFillStyle": "red", "symbolLineWidth": 1, "symbolLineDash":"[0]" },
+        "note": "(*) không bắt buộc truyền vào.",
+        "response": {}
+    },
+    {
+        "name": "Upload file-1 //TODO",
+        "method": "POST",
+        "route": "/file-1",
+        "payloadParams": { "file": "file", "transactionID": "RandomUniqueString" },
+        "samplePayload": { "file": "file", "transactionID": "RandomUniqueString" },
+        "note": "File được upload lên sẽ lưu vào trong '/tmp/transactionID'.Cần trả về danh sách các curve có trong LAS",
+        "response": { "code": 200, "reason": "Success", "content": "[mang nội dung của ~curve section trong LAS]" }
+    },
+    {
+        "name": "//TODO",
+        "method": "POST",
+        "route": "/file-2",
+        "payloadParams": { "transactionID" : "" },
+        "samplePayload": {  "transactionID": "transactionID của step file-1", "curvenames": "[ mảng các curves sẽ được import]", "idProject": 1, "idWell": "2 || null", "idDataset": "3 || null" },
+        "note": "thực sự tạo các well, dataset, curve và import data từ các file tìm ra được thông qua transactionID",
+        "response": "trả về giống trường của /file"
+    },
+    {
+        "name": "Export curve datat to excel",
+        "method": "POST",
+        "route": "/project/well/dataset/curve/export",
+        "payloadParams": { "idCurve": "" },
+        "samplePayload": { "idCurve": 2 },
+        "note": "check status Http200: success va file duoc gui theo res404: not found with idCurve",
+        "response": {}
+    },
+    {
+        "name": "Tao Shading",
+        "method": "POST",
+        "route": "/project/well/plot/track/shading/new",
+        "payloadParams": { "idTrack": "", "name": "", "negativeFill": "", "positiveFill": "", "isNegPosFilling": "bool", "idLeftLine": "", "idRightLine": "", "leftFixedValue": "", "rightFixedValue": "", "idControlCurve": "" },
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "Sua shading",
+        "method": "POST",
+        "route": "/project/well/plot/track/shading/edit",
+        "payloadParams": { "idTrack": "", "name": "", "negativeFill": "", "positiveFill": "", "isNegPosFilling": "bool", "idLeftLine": "", "idRightLine": "", "leftFixedValue": "", "rightFixedValue": "", "idControlCurve": "" },
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "Xóa shading",
+        "method": "POST",
+        "route": "/project/well/plot/track/shading/delete",
+        "payloadParams": {},
+        "samplePayload": {},
+        "note": "name: newShading",
+        "response": {}
+    },
+    {
+        "name": "Tạo Zone Track",
+        "method": "POST",
+        "route": "/project/well/plot/zone-track/new",
+        "payloadParams": { "idPlo": "Number (changed idTrack to idPlot)", "title": "String (Zone1)", "showTitle": "Boolean (true)", "topJustification": "Enum[Center,Left,Right] (Center)", "bottomJustification": "Enum[Center, Left, Right] (Center)", "color": "String (white)", "width": "Float (1.0)", "idZoneSet": "Integer", "orderNum": "String" },
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "Sửa Zone Track",
+        "method": "POST",
+        "route": "/project/well/plot/zone-track/edit",
+        "payloadParams": { "title": "String (*)", "showTitle": "Boolean (*)", "topJustification": "Enum(Center, Left, Right) (*)", "bottomJustification": "Enum(Center, Left, Right) (*)", "color": "String (*)", "width": "Number (*)", "idZoneSet": "String (*)" },
+        "samplePayload": {},
+        "note": "(*) không bắt buộc truyền vào.",
+        "response": "pattern: {"
+    },
+    {
+        "name": "Info Zone Track",
+        "method": "POST",
+        "route": "/project/well/plot/zone-track/info",
+        "payloadParams": { "idZoneTrack": "Integer" },
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "Xóa Zone Track",
+        "method": "DELETE",
+        "route": "/project/well/plot/zone-track/delete",
+        "payloadParams": { "idZoneTrack": "Integer" },
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "Tạo Zone Set",
+        "method": "POST",
+        "route": "/project/well/zone-set/new",
+        "payloadParams": { "idWell": "Integer", "name": "String" },
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "List Zone Set",
+        "method": "POST",
+        "route": "/project/well/zone-set/list",
+        "payloadParams": { "idWell": "Integer" },
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "Info Zone Set",
+        "method": "POST",
+        "route": "/project/well/zone-set/info",
+        "payloadParams": { "idZoneSet": "Number" },
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "Tạo Zone",
+        "method": "POST",
+        "route": "/project/well/zone-set/zone/new",
+        "payloadParams": { "idZoneSet": "Integer", "name": "String", "showname": "Boolean (true)", "startDepth": "Number", "endDepth": "Number", "fill": "Object" },
+        "samplePayload": {},
+        "note": "",
+        "response": "}"
+    },
+    {
+        "name": "Sửa Zone",
+        "method": "POST",
+        "route": "/project/well/zone-set/zone/edit",
+        "payloadParams":  { "idZoneSet": "Integer", "name": "String (*)", "showname": "Boolean (*)", "startDepth": "Number (*)", "endDepth": "Number(*)", "fill": "Object (*)" },
+        "samplePayload": {},
+        "note": "(*) không bắt buộc truyền vào.",
+        "response": {}
+    },
+    {
+        "name": "Info Zone",
+        "method": "POST",
+        "route": "/project/well/zone-set/zone/info",
+        "payloadParams": { "idZone": "Integer" },
+        "samplePayload": {},
+        "note": "negativeFill:{",
+        "response": {}
+    },
+    {
+        "name": "Xóa Zone",
+        "method": "DELETE",
+        "route": "/project/well/zone-set/zone/delete",
+        "payloadParams": { "idZone": "Integer" },
+        "samplePayload": {},
+        "note": "",
+        "response": "pattern: {"
+    },
+    {
+        "name": "Tạo CrossPlot",
+        "method": "POST",
+        "route": "/project/well/cross-plot/new",
+        "payloadParams": { "idWell": "Integer", "name": "String" },
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "Sửa CrossPlot",
+        "method": "POST",
+        "route": "/project/well/cross-plot/edit",
+        "payloadParams": { "idWell": "Integer", "name": "String" },
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "Info CrossPlot",
+        "method": "POST",
+        "route": "/project/well/cross-plot/info",
+        "payloadParams": { "idCrossPlot": "Integer" },
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "Xóa CrossPlot",
+        "method": "DELETE",
+        "route": "/project/well/cross-plot/delete",
+        "payloadParams": { "idCrossPlot": "Integer" },
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "Tạo PointSet",
+        "method": "POST",
+        "route": "/project/well/cross-plot/point-set/new",
+        "payloadParams": { "idCrossPlot": "Integer", "idCurveX": "Integer (*)", "idCurveY": "Integer (*)", "idCurveZ": "Integer (*)", "idWell": "Integer", "left": "float =>scaleLeft", "right": "float => scaleRight", "bottom": "float  => scaleBottom", "top": "float => scaleTop", "logX": "boolean (false)", "logY": "boolean( false)", "majorX": "Integer (*)", "majorY": "Integer (*)", "minorX": "Integer(*)", "minorY": "Integer (*)", "min": "Integer (*)  => scaleMin", "max": "Integer(*)  => scaleMax", "numColor": "Integer (*)", "pointSymbol": "String", "pointSize": "Integer(5)", "color": "String(blue) => pointColor", "overlayLine": "String ('AnaDrill CDN 6.5in Den/Neu Rhof 1.0')", "standalone": "boolean (false)", "showLine": "boolean ( true)", "lineMode": "boolean (true)", "zAxes": "ENUM(Curve,Zone)" },
+        "samplePayload": {},
+        "note": "(*) không bắt buộc truyền vào.",
+        "response": {}
+    },
+    {
+        "name": "Sửa PointSet",
+        "method": "POST",
+        "route": "/project/well/cross-plot/point-set/edit",
+        "payloadParams": "similar above. Send fields should be changed",
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "Info PointSet",
+        "method": "POST",
+        "route": "/project/well/cross-plot/point-set/info",
+        "payloadParams": { "idPointSet": "" },
+        "samplePayload": {},
+        "note": "positiveFill: {",
+        "response": {}
+    },
+    {
+        "name": "Xóa PointSet",
+        "method": "DELETE",
+        "route": "/project/well/cross-plot/point-set/delete",
+        "payloadParams": { "idPointSet": "" },
+        "samplePayload": {},
+        "note": "",
+        "response": "pattern: {"
+    },
+    {
+        "name": "Tạo Polygon",
+        "method": "POST",
+        "route": "/project/well/cross-plot/polygon/new",
+        "payloadParams": { "idCrossPlotlineStyle": "String", "display": "boolean(false)", "points": "array of JSON" },
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "Sửa Polygon",
+        "method": "POST",
+        "route": "/project/well/cross-plot/polygon/edit",
+        "payloadParams": {"idPolygon": "" },
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "Info Polygon",
+        "method": "POST",
+        "route": "/project/well/cross-plot/polygon/info",
+        "payloadParams": {"idPolygon": "" },
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "Xóa Polygon",
+        "method": "DELETE",
+        "route": "/project/well/cross-plot/polygon/delete",
+        "payloadParams": {"idPolygon": "" },
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "Tạo Discrim",
+        "method": "POST",
+        "route": "/project/well/discrim/new",
+        "payloadParams": { "idHistogram || idCrossPlot": "", "value": "STRING"},
+        "samplePayload": { "value" :{}, "idCrossPlot" : 1 },
+        "note": "",
+        "response": { "code": 200, "reason":"Create new Discrim success", "content": { "use": "false", "idDiscrim": "5", "value":{}, "idCrossPlot": 1, "updatedAt": "2017-10-17T10:38:49.502Z", "createdAt": "2017-10-17T10:38:49.502Z" }}
+    },
+    {
+        "name": "Sửa Discrim",
+        "method": "POST",
+        "route": "/project/well/discrim/edit",
+        "payloadParams": {},
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "Info Discrim",
+        "method": "POST",
+        "route": "/project/well/discrim/info",
+        "payloadParams": { "idDiscrim": "" },
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "Xóa Discrim",
+        "method": "DELETE",
+        "route": "/project/well/discrim/delete",
+        "payloadParams": { "idDiscrim": "" },
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "List Discrim By CrossPlot/Histogram",
+        "method": "POST",
+        "route": "/project/well/discrim/list",
+        "payloadParams": { "list": "ENUM('cross-plot','histogram')" },
+        "samplePayload": { "list": "histogram" },
+        "note": "",
+        "response": {"code": 200, "reason":"Get list Discrim of cross-plot success", "content": [{ "idDiscrim": 1, "use": "true", "combine":"and", "func":"", "value": "null", "createdAt": "null", "updatedAt": "null", "idCrossPlot": 1, "idHistogram": "null", "idCurveLeft": 1, "idCurveRight": 1},{ "idDiscrim": "4", "use": "false", "combine": "and", "func":"<", "value": "null", "createdAt":"2017-09-11T04:09:13.000Z", "updatedAt":"2017-09-11T04:09:13.000Z", "idCrossPlot": 1, "idHistogram": "null", "idCurveLeft": 1, "idCurveRight": 2 } ]}
+    },
+    {
+        "name": "Register",
+        "method": "POST",
+        "route": "/register",
+        "payloadParams": { "username": "String", "password": "String ( is Encrypted)" },
+        "samplePayload": { "username":"mothi", "password":"123456"},
+        "note": "",
+        "response": { "code": 200, "reason":"Success","content":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6ImxhbiIsInBhc3N3b3JkIjoiMTIzNDU2IiwiaWF0IjoxNTA0MDg2NjExLCJleHAiOjE1MDQwOTAyMTF9.3GpOnXm8_i6fl_jq4rjrX1VlUtbZoNOAM32QdbPwGas"}
+    },
+    {
+        "name": "Login",
+        "method": "POST",
+        "route": "/login",
+        "payloadParams": {},
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "Authenticate",
+        "method": "none",
+        "route": "none",
+        "payloadParams": {},
+        "samplePayload": {},
+        "note": "HTTP request có Authentication header: [token]",
+        "response": {}
+    },
+    {
+        "name": "Tạo Histogram",
+        "method": "POST",
+        "route": "/project/well/histogram/new",
+        "payloadParams": { "name": "String", "histogramTitle": "String", "hardCopyWidth": "Double", "hardCopyHeight": "Double", "intervalDepthTop": "Double", "intervalDepthBottom": "Double", "divisions": "Integer", "leftScale": "Double", "rightScale": "Double", "showGaussian": "Boolean", "loga": "Boolean", "showGrid": "Boolean", "flipHorizontal": "Boolean", "lineStyle": "String", "lineColor": "String", "plot" : "ENUM('Bar','Curve')", "plotType": "ENUM('Frequency','Percent')", "color": "String", "discriminators": "String", "idWell": "Integer (required)", "idCurve": "Integer", "idZoneSet": "Integer", "idZone": "Integer", "activeZone": "String" },
+        "samplePayload": { "idWell" : 1,   "intervalDepthTop": "118.9, (*)", "intervalDepthBottom": "1189.5,(*)", "idZoneSet": "1 (*)" },
+        "note": "(*) không bắt buộc truyền vào.",    
+        "response": { "code": 200, "reason":"Create new histogram success", "content": { "idHistogram": "14", "histogramTitle": "null", "hardCopyWidth": "null", "hardCopyHeight": "null", "intervalDepthTop": "118.9", "intervalDepthBottom": "1189.5", "divisions": "50", "leftScale": 0, "rightScale": 0, "showGaussian": "false", "loga": "false", "showGrid": "false", "flipHorizontal": "false", "lineStyle":"Custom", "lineColor":"Blue", "plotType":"Frequency", "color":"Blue", "discriminators": "null", "createdAt":"2017-09-06T07:44:10.000Z", "updatedAt":"2017-09-06T07:44:10.000Z", "idWell": "18", "idCurve": "null", "idZoneSet": "null" }}
+    
+    },
+    {
+        "name": "Info Histogram",
+        "method": "POST",
+        "route": "/project/well/histogram/info",
+        "payloadParams": { "idHistogram": "" },
+        "samplePayload": {},
+        "note": "",
+        "response": {"code": 200,"reason":"Successful","content": {"idHistogram": "8","histogramTitle": "null","hardCopyWidth": "null", "hardCopyHeight": "null", "intervalDepthTop": "null", "intervalDepthBottom": "null","activeZone":"All","divisions": "50", "leftScale": 0,       "rightScale": 0,       "showGaussian": "false", "loga": "false", "showGrid": "false", "flipHorizontal": "false", "lineStyle":"Custom", "lineColor":"Blue","plotType":"Frequency", "color":"Blue", "discriminators": "null", "createdAt":"2017-09-08T04:21:38.000Z", "updatedAt":"2017-09-08T04:21:38.000Z", "idWell": 1, "idCurve": "null", "idZoneSet": 1, "zoneset": { "idZoneSet": 1,"name":"hoang", "createdAt": "null", "updatedAt": "null", "idWell": 1, "zones": [{ "idZone": 1, "startDepth": "1000", "endDepth": "9000","fill":"","showname": "true", "name":"","createdAt": "null",  "updatedAt": "null", "idZoneSet": 1},{"idZone": 2, "startDepth": 1,"endDepth": 2,"fill":"","showname": "true", "name":"", "createdAt": "null", "updatedAt": "null", "idZoneSet": 1}]}, "well": {"idWell": 1,"name":"W4", "topDepth":"1119.8352", "bottomDepth":"2184.8064","step":"0.1524", "createdAt":"2017-09-08T03:35:49.000Z","updatedAt":"2017-09-08T03:35:49.000Z", "idProject": 1 }}}
+    },
+    {
+        "name": "Sửa Histogram",
+        "method": "POST",
+        "route": "/project/well/histogram/edit",
+        "payloadParams": {"histogramTitle": "String (*)","hardCopyWidth": "Double", "hardCopyHeight": "Double", "intervalDepthTop": "Double", "intervalDepthBottom": "Double", "divisions": "Integer", "leftScale": "Double", "rightScale": "Double", "showGaussian": "Boolean", "loga": "Boolean", "showGrid": "Boolean", "flipHorizontal": "Boolean", "lineStyle": "String", "lineColor": "String", "plotType": "ENUM('Frequenc','Percent')", "color": "String", "discriminators": "String", "idWell": "Integer", "idCurve": "Integer", "idZoneSet": "Integer", "activeZone": "String" },
+        "samplePayload": {},
+        "note": "(*) không bắt buộc truyền vào.",
+        "response": {}
+    },
+    {
+        "name": "Xóa Histogram",
+        "method": "DELETE",
+        "route": "/project/well/histogram/delete",
+        "payloadParams": { "idHistogram": "" },
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "Get All Histogram",
+        "method": "POST",
+        "route": "/project/well/histogram/all",
+        "payloadParams": {},
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "GET PAL INFO",
+        "method": "POST",
+        "route": "/pal/all",
+        "payloadParams": {},
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "Tạo Marker",
+        "method": "POST",
+        "route": "/project/well/plot/track/marker/new",
+        "payloadParams": { "name": "String", "nameHAlign": "ENUM", "nameVAlign": "ENUM", "depth": "Double", "precision": "Integer", "depthHAlign": "ENUM", "depthVAlign": "ENUM", "lineWidth": "Integer", "lineDash": "[a,b,c]", "lineColor": "String", "showSymbol": "Boolean", "symbolname": "ENUM", "symbolSize": "Integer", "symbolStrokeStyle": "String","symbolFillStyle": "String", "symbolLineWidth": "Inteher", "symbolLineDash": "[a,b,c]", "idTrack": "Integer"},
+        "samplePayload": { "name": "Example", "idTrack" : 1, "depth" : 1900 },
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "Info Marker",
+        "method": "POST",
+        "route": "/project/well/plot/track/marker/info",
+        "payloadParams": { "idMarker": "" },
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "Sửa Marker",
+        "method": "POST",
+        "route": "/project/well/plot/track/marker/edit",
+        "payloadParams": { "idMarker" : "Integer", "name": "String", "nameHAlign": "ENUM", "nameVAlign": "ENUM", "depth": "Double", "precision": "Integer", "depthHAlign": "ENUM", "depthVAlign": "ENUM", "lineWidth": "Integer", "lineDash": "[a,b,c]", "lineColor": "String", "showSymbol": "Boolean", "symbolname": "ENUM", "symbolSize": "Integer", "symbolStrokeStyle": "String","symbolFillStyle": "String", "symbolLineWidth": "Inteher", "symbolLineDash": "[a,b,c]", "idTrack": "Integer"},
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "Xóa Marker",
+        "method": "DELETE",
+        "route": "/project/well/plot/track/marker/delete",
+        "payloadParams": { "idMarker": "" },
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "GET CustomFills",
+        "method": "POST",
+        "route": "/custom-fill/all",
+        "payloadParams": {},
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "Save CustomFills",
+        "method": "POST",
+        "route": "/custom-fill/save",
+        "payloadParams": { "name": "String", "content":[{ "lowVal": "40", "hightVal": "50", "pattern": "chert", "foreground": "black", "background": "blue", "description": "" },{ "lowVal": "50", "hightVal": "70", "pattern": "chert", "foreground": "yellow", "background": "blue", "description": "" }]},
+        "samplePayload": {},
+        "note": "",
+        "response":  { "code": 200, "reason":"Added new custom-fill", "content": { "name": "abc", "content": [{ "lowVal": "99999", "hightVal": "50", "pattern": "chert", "foreground": "black", "background": "blue", "description": "" },{ "lowVal": "50", "hightVal": "70", "pattern": "chert", "foreground": "yellow", "background": "blue", "description": "" }]}}
+    
+    },
+    {
+        "name": "Clear/Init (Advance)",
+        "method": "POST",
+        "route": "/custom-fill/clear",
+        "payloadParams": {},
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "Create new user define line",
+        "method": "POST",
+        "route": "project/well/cross-plot/user-define-line/new",
+        "payloadParams": { "function" : "String", "lineStyle" : "String", "displayLine" : "Boolean", "displayEquation" : "Boolean", "idCrossPlot" : "Integer" },
+        "samplePayload": { "function" : "day la function", "lineStyle" : "day la line style", "displayLine" : "true", "displayEquation" : "true", "idCrossPlot" : 1 },
+        "note": "",    
+        "response": { "code": 200, "reason":"Create new user define line successfull", "content": {"idUserDefineLine": 7, "function":"day la function", "lineStyle" : "day la line style", "displayLine" : "true", "displayEquation" : "true", "idCrossPlot" : 1, "createdAt":"2017-09-15T07:32:41.000Z","updatedAt":"2017-09-15T07:32:41.000Z"}}
+    
+    },
+    {
+        "name": "Info user define line",
+        "method": "POST",
+        "route": "project/well/cross-plot/user-define-line/info",
+        "payloadParams": { "idUserDefineLine": "" },
+        "samplePayload": {},
+        "note": "",  
+        "response": { "code": 200, "reason": "Successfull", "content": {"idUserDefineLine": 7, "function":"day la function", "lineStyle" : "day la line style", "displayLine" : "true", "displayEquation" : "true", "idCrossPlot" : 1, "createdAt":"2017-09-15T07:32:41.000Z",       "updatedAt":"2017-09-15T07:32:41.000Z"}}
+    
+    },
+    {
+        "name": "edit user define line",
+        "method": "POST",
+        "route": "project/well/cross-plot/user-define-line/edit",
+        "payloadParams": { "idUserDefineLine": "Integer", "function": "String", "lineStyle": "String", "displayLine": "Boolean", "displayEquation": "Boolean", "idCrossPlot": "Integer" },
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "delete userdefine line",
+        "method": "DELETE",
+        "route": "project/well/cross-plot/user-define-line/delete",
+        "payloadParams": { "idUserDefineLine": "" },
+        "samplePayload": {},
+        "note": "info of deleted line",
+        "response": {}
+    },
+    {
+        "name": "upload image to get url",
+        "method": "POST",
+        "route": "/image-upload",
+        "payloadParams": { "image": ".jpg" },
+        "samplePayload": {},
+        "note": "",
+        "response": { "code": 200, "reason":"Upload success", "content":"/c61f3965/0e48e95d/efd21a5e/e2349db0/linux.jpg" }
+    },
+    {
+        "name": "create image",
+        "method": "POST",
+        "route": "/project/well/plot/track/image/new",
+        "payloadParams": { "location" :"/c61f3965/0e48e95d/efd21a5e/e2349db0/linux.jpg", "top": "1146.048", "bottom": "1155.4141979508197", "width": "50", "left": "50", "idTrack": 1},
+        "samplePayload": {},
+        "note": "",
+        "response": { "code": 200, "reason": "Create new image success", "content": { "idImage": 1, "location": "/c61f3965/0e48e95d/efd21a5e/e2349db0/linux.jpg", "top": "1146.048", "bottom": "1155.4141979508197", "width": "50", "left": "50", "idTrack": 1, "updatedAt": "2017-09-22T03:06:06.498Z", "createdAt":"2017-09-22T03:06:06.498Z" }}
+    },
+    {
+        "name": "edit image",
+        "method": "POST",
+        "route": "/project/well/plot/track/image/edit",
+        "payloadParams": { "create payload + idImage" : "" },
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "info image",
+        "method": "POST",
+        "route": "/project/well/plot/track/image/info",
+        "payloadParams": { "idImage" : "" },
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "delete image",
+        "method": "DELETE",
+        "route": "/project/well/plot/track/image/delete",
+        "payloadParams": { "idImage" : "" },
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "Create new annotation",
+        "method": "POST",
+        "route": "/project/well/plot/track/annotation/new",
+        "payloadParams": {"text": "String", "textStyle": "String", "vAlign": "ENUM('Top','Center','Bottom')","hAlign": "ENUM('Left','Center','Right')", "background": "String","fitBounds": "Boolean","deviceSpace": "Boolean", "vertical": "Boolean","shadow": "Boolean","left": "Double", "width": "Double", "top": "Double", "bottom": "Double", "idTrack": "1 (required)"},
+        "samplePayload": {   "text":"hihi",   "textStyle":{},   "vAlign":"Center",   "hAlign":"Center",   "background":{},   "fitBounds": "true",   "deviceSpace": "true",   "vertical": "false",   "shadow": "false",   "left": 0,   "width": "100",   "top": 0,   "bottom": 0,"idTrack": 1 },
+        "note": "",
+        "response": {   "code": 200,   "reason":"Create new Annotation success",   "content": {       "idAnnotation": 2,       "text":"hihi",       "textStyle":{}, "vAlign":"Center", "hAlign":"Center", "background":{}, "fitBounds": "true", "deviceSpace": "true","vertical": "false", "shadow": "false","left": 0,"width": "100","top": 0,"bottom": 0,"idTrack": 1,"updatedAt": "2017-09-22T09:55:31.513Z", "createdAt": "2017-09-22T09:55:31.513Z"}}
+    },
+    {
+        "name": "Edit an annotation",
+        "method": "POST",
+        "route": "/project/well/plot/track/annotation/edit",
+        "payloadParams": { "required idAnnotation" : "" },
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "Get annotation info",
+        "method": "POST",
+        "route": "/project/well/plot/track/annotation/info",
+        "payloadParams": { "idAnnotation": "" },
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "Delete an annotation",
+        "method": "DELETE",
+        "route": "/project/well/plot/track/annotation/delete",
+        "payloadParams":  { "idAnnotation": "" },
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "Create new regression line",
+        "method": "POST",
+        "route": "/poroject/well/cross-plot/regression-line/new",
+        "payloadParams": {   "idCrossplot": "Integer",   "lineStyle": "Object",   "displayLine": "Boolean",   "displayEquation": "Boolean",   "regType": "ENUM('Linear', 'Exponent', 'Powerwer')",   "inverseReg": "Boolean",   "exclude": "Boolean",   "fitX": "Double",   "fitY": "Double",   "polygons": "Array of IdPolygons"},
+        "samplePayload": { "idCrossPlot": 1,"lineStyle": {"color": "Blue", "width": 1, "style": []},"displayLine": "true","displayEquation": "true", "regType": "Linear", "inverseReg": "false", "exclude": "false","fitX": "12.32", "fitY":" 232.232", "polygons": [1,3] },
+        "note": "",
+        "response": {   "code": 200,   "reason":"Save polygon_regressionLine success",   "content": [ {"createdAt":"2017-09-24T07:45:00.869Z", "updatedAt":"2017-09-24T07:45:00.869Z", "idPolygon": 1, "idRegressionLine": 7  },  {"createdAt":"2017-09-24T07:45:00.869Z","updatedAt":"2017-09-24T07:45:00.869Z", "idPolygon": "3","idRegressionLine": 7}]}
+    },
+    {
+        "name": "Edit an regression line",
+        "method": "POST",
+        "route": "/project/well/cross-plot/regression-line/edit",
+        "payloadParams": {"create payload + idRegressionLine" : "" },
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "Get an regressionLine",
+        "method": "POST",
+        "route": "/project/well/regression-line/info",
+        "payloadParams": { "idRegressionLine" : "" },
+        "samplePayload": {},
+        "note": "",
+        "response": {"code": 200,"reason":"Get regressionLine info success","content": {"idRegressionLine": 2,"lineStyle":"{color: 'Blue', width: 1, style: []}","displayLine": "true","displayEquation": "true","regType":"Linear","inverseReg": "false","exclude": "false","fitX": "12.12","fitY": "122.213","createdAt":"2017-09-23T14:33:35.000Z","updatedAt":"2017-09-23T14:33:35.000Z","idCrossPlot": 1,"polygons": [{"idPolygon": 1,"lineStyle":"pokwiao","display": "false","points":"adfw","createdAt":"2017-09-23T14:31:45.000Z","updatedAt":"2017-09-23T14:31:45.000Z","idCrossPlot": 1,"Polygon_RegressionLine": {"createdAt":"2017-09-23T14:33:35.000Z","updatedAt":"2017-09-23T14:33:35.000Z","polygonId": 1,"regressionLineId": 2}},{"idPolygon": "3","lineStyle":"pokwiao","display": "false","points":"adfw","createdAt":"2017-09-23T14:31:54.000Z","updatedAt":"2017-09-23T14:31:54.000Z","idCrossPlot": 1,"Polygon_RegressionLine": {"createdAt":"2017-09-23T14:33:35.000Z","updatedAt":"2017-09-23T14:33:35.000Z","polygonId": "3","regressionLineId": 2}}]}}
+    },
+    {
+        "name": "Delete an regressionLine",
+        "method": "DELETE",
+        "route": "/project/well/regression-line/delete",
+        "payloadParams": { "idRegressionLine": "" },
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "Get family list",
+        "method": "GET",
+        "route": "/family/list",
+        "payloadParams": {},
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "Update a family with new spec",
+        "method": "POST",
+        "route": "/family/update-spec",
+        "payloadParams": { "idFamily": "int", "idFamilySpec": "int" },
+        "samplePayload": {},
+        "note": "Đổi spec của 1 family sang spec mới",
+        "response": {}
+    },
+    {
+        "name": "Tạo family mới",
+        "method": "POST",
+        "route": "/family/new",
+        "payloadParams": {},
+        "samplePayload": {"name":"Rate of opreration","familyGroup":"ROP","unit":"mn/m","minScale": 0,"maxScale": "60","displayType":"Linear","displayMode":"Line","blockPosition":"NONE","lineStyle":"[7,2,2,2]","lineWidth": 1,"lineColor":"black"},
+        "note": "tất cả các trường không được null",    
+        "response": {"code": 200,"reason":"Create new Family success",   "content": {"idFamily": "318","name":"Rate of opreration","familyGroup":"ROP","unit":"mn/m","minScale": 0,"maxScale": "60","displayType":"Linear","displayMode":"Line","blockPosition":"NONE","lineStyle":"[7,2,2,2]","lineWidth": 1,"lineColor":"black","updatedAt":"2017-09-25T09:07:10.115Z","createdAt":"2017-09-25T09:07:10.115Z"}}
+    
+    },
+    {
+        "name": "Sửa family",
+        "method": "POST",
+        "route": "/family/edit",
+        "payloadParams": {},
+        "samplePayload": {},
+        "note": "các field cần thay đổi kèm idFamily",
+        "response": {}
+    },
+    {
+        "name": "Xóa family",
+        "method": "DELETE",
+        "route": "/family/delete",
+        "payloadParams": { "idFamily": ""},
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "Get family info",
+        "method": "POST",
+        "route": "/family/info",
+        "payloadParams":  { "idFamily": ""},
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "Lấy minmaxScale 1 Curve",
+        "method": "POST",
+        "route": "/project/well/dataset/curve/scale",
+        "payloadParams": { "idCurve": "" },
+        "samplePayload": {"idCurve": 1 },
+        "note": "",
+        "response": {"code": 200,"reason":"min max curve success","content": {"minScale": 53.8328,"maxScale": 137.8071}}
+    
+    },
+    {
+        "name": "Duplicate logplot",
+        "method": "POST",
+        "route": "/project/well/plot/duplicate",
+        "payloadParams": { "idPlotidWell": "" },
+        "samplePayload": {"idPlot": 1,"idWell": 1 },
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "create reference curve",
+        "method": "POST",
+        "route": "/project/well/reference-curve/new",
+        "payloadParams": {"idHistogram" : "Integer", "idCrossplot" : "Integer", "idCurve" : "Integer" },
+        "samplePayload": {"idHistogram" : 1,"idCurve" : 1 },
+        "note": "",
+        "response": {"code": 200,"reason":"Create new reference successful!","content": {"left": 0,"right": 0,"visiable": "true","log": "true","color":"rgb(0,0,0)","idReferenceCurve": "6","idHistogram": 2,"idCurve": 1,"updatedAt":"2017-10-02T04:48:21.895Z","createdAt":"2017-10-02T04:48:21.895Z"}}
+    
+    },
+    {
+        "name": "info reference curve",
+        "method": "POST",
+        "route": "/project/well/reference-curve/info",
+        "payloadParams": { "idReferenceCurve" : "" },
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "delete reference curve",
+        "method": "DELETE",
+        "route": "/project/well/reference-curve/delete",
+        "payloadParams": { "idReferenceCurve" : ""} ,
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "edit reference curve",
+        "method": "POST",
+        "route": "/project/well/reference-curve/edit",
+        "payloadParams": {},
+        "samplePayload": {},
+        "note": "same as response when create",
+        "response": {}
+    },
+    {
+        "name": "Create ternary",
+        "method": "POST",
+        "route": "nhu tren",
+        "payloadParams": {"idCrossPlot" : 1},
+        "samplePayload": {},
+        "note":  "",   
+        "response": {"code": 200,"reason":"Create new ternary success","content": {"xValue": 0,"yValue": 0,"name":"","style":"Circle","usedIn": "false","show": "true","idTernary": 1,"idCrossPlot": 1,"updatedAt":"2017-10-06T10:34:03.298Z","createdAt":"2017-10-06T10:34:03.298Z"}}
+    
+    },
+    {
+        "name": "List Ternary by crosspot id",
+        "method": "POST",
+        "route": "none",
+        "payloadParams": {"idCrossPlot" : ""},
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "delete ternary",
+        "method": "DELETE",
+        "route": "none",
+        "payloadParams": {},
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "edit ternary",
+        "method": "POST",
+        "route": "none",
+        "payloadParams": {},
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "info",
+        "method": "POST",
+        "route": "none",
+        "payloadParams": {},
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "save ternary template",
+        "method": "POST",
+        "route": "/ternary/save-template",
+        "payloadParams": { "filename": "String", "content": "Array of Objects" },
+        "samplePayload": {},
+        "note": "",
+        "response": {"filename" :"test_1","content" : [{"x" : 1212,"y" : 1321},{"x" : 3133,"y" : 1311}]}
+    },
+    {
+        "name": "list ternary template",
+        "method": "POST",
+        "route": "/ternary/list-template",
+        "payloadParams": {},
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "remove ternay template",
+        "method": "POST",
+        "route": "/ternary/remove-template",
+        "payloadParams": { "filename": "String"},
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "Edit Curve Data",
+        "method": "POST",
+        "route": "/project/well/dataset/curve/updateData",
+        "payloadParams": { "projectName": "", "wellName": "", "idDataset": "", "idSrcCurve": "", "idDesCurve": "", "isBackupidLine": "", "file": "", "newCurvename": "new_name" },
+        "samplePayload": {},
+        "note": "newCurvename và idDesCurve isBackup không được đồng thời tồn tại",
+        "response": {}
+    },
+    {
+        "name": "Processing curves",
+        "method": "POST",
+        "route": "/project/well/dataset/curve/processing",
+        "payloadParams": {"data" : [123,123,123,123,123],"idDataset" : 2,"curvename" : "String","idDesCurve" : "3" },
+        "samplePayload": {"data" : [123,132,13,123,123,123,213,213,133,1321,312,123,123,321,321,132],"idDataset" : 7,"idDesCurve" : "65"},
+        "note": "Cần có giải pháp reload lại các line trên logplot trong trường hợp ghi đè curve",
+        "response": {   "code": 200,   "reason":"Successfull",   "content": {"lines" : [],"histograms" : [],"pointsets" : []}}
+    },
+    {
+        "name": "Create image track",
+        "method": "POST",
+        "route": "/project/well/plot/image-track/new/",
+        "payloadParams": {"showTitle": "true","title":"Image Track 1","topJustification":"Center","orderNum":"zz","background":"white","width": 1,"idImageTrack": "60000000000000000000000000000000000","idPlot": 2},
+        "samplePayload": {"idPlot" : 1},
+        "note": "yêu cầu idPlot",
+        "response": {"code": 200,"reason":"Successful","content": {"showTitle": "true","title":"Image Track 1","topJustification":"Center","orderNum":"zz","background":"white","width": 1,"idImageTrack": "6","idPlot": 2,"updatedAt":"2017-10-26T04:44:53.760Z","createdAt":"2017-10-26T04:44:53.760Z"}}
+    },
+    {
+        "name": "Info image track",
+        "method": "POST",
+        "route": "/project/well/plot/image-track/info/",
+        "payloadParams": { "idImageTrack" : "" },
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "edit image track",
+        "method": "POST",
+        "route": "/project/well/plot/image-track/edit/",
+        "payloadParams": { "idImageTrack" : "",  "info" : "" },
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "delete image track",
+        "method": "DELETE",
+        "route": "/project/well/plot/image-track/delete/",
+        "payloadParams": { "idImageTrack" : "" },
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "Create image of image track",
+        "method": "POST",
+        "route": "/project/well/plot/image-track/image/new/",
+        "payloadParams": { "imageUrl":"","topDepth": 0,"bottomDepth": "100","left": 0,"right": "100","idImageTrack" : 1 },
+        "samplePayload": { "idImageTrack" : "3","imageUrl":"","topDepth": 0,"bottomDepth": "100"},
+        "note": "Cần cả 4 element",
+        "response": {"code": 200,"reason":"Successful","content": {"idImageOfTrack": "3","idImageTrack": "3","imageUrl":"","topDepth": 0,"bottomDepth": "100","left": 0,"right": "100","updatedAt":"2017-10-26T04:52:09.464Z","createdAt":"2017-10-26T04:52:09.464Z"}}
+    },
+    {
+        "name": "Info  image of image track",
+        "method": "POST",
+        "route": "/project/well/plot/image-track/image/info/",
+        "payloadParams": { "idImageOfTrack" : ""},
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "Edit  image of image track",
+        "method": "POST",
+        "route": "/project/well/plot/image-track/image/edit/",
+        "payloadParams": { "idImageOfTrack" : ""},
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "list image of track by image track id",
+        "method": "POST",
+        "route": "/project/well/plot/image-track/image/list",
+        "payloadParams": { "idImageOfTrack" : ""},
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "Delete  image of image track",
+        "method": "DELETE",
+        "route": "/project/well/plot/image-track/image/delete/",
+        "payloadParams": { "idImageOfTrack" : ""},
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "Create object track",
+        "method": "POST",
+        "route": "/project/well/plot/object-track/new/",
+        "payloadParams": { "showTitle": "true","title":"Histogram Track 1","topJustification":"Center","orderNum":"zz","width": 1,"idObjectTrack": 2,"idPlot": 2},
+        "samplePayload": {},
+        "note": "",
+        "response": {"code": 200,"reason":"Successful ObjectTrack","content": {"showTitle": "true","title":"Histogram Track 1","topJustification":"Center","orderNum":"zz","width": 1,"idObjectTrack": 2,"idPlot": 2,"updatedAt":"2017-10-26T04:54:22.273Z","createdAt":"2017-10-26T04:54:22.273Z"}}
+    },
+    {
+        "name": "Info object track",
+        "method": "POST",
+        "route": "/project/well/plot/object-track/info/",
+        "payloadParams": { "idObjectTrack" : "" },
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "Edit object track",
+        "method": "POST",
+        "route": "/project/well/plot/object-track/edit/",
+        "payloadParams": { "idObjectTrack" : "" },
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "Delete object track",
+        "method": "DELETE",
+        "route": "/project/well/plot/object-track/delete/",
+        "payloadParams": { "idObjectTrack" : "" },
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "Create object of object track",
+        "method": "POST",
+        "route": "/project/well/plot/object-track/object/new/",
+        "payloadParams": { "idObjectTrack" : 2, "object" :"", "topDepth" : "10", "bottomDepth" : "100" },
+        "samplePayload": {},
+        "note": "",
+        "response": {"code": 200, "reason":"Successful ObjectOfTrack", "content": {"left": 0,"right": "100","idObjectOfTrack": 1, "idObjectTrack": 2, "object":"","topDepth": "10","bottomDepth": "100", "updatedAt":"2017-10-26T05:00:10.664Z","createdAt":"2017-10-26T05:00:10.664Z"}}
+    },
+    {
+        "name": "Info object of object track",
+        "method": "POST",
+        "route": "/project/well/plot/object-track/object/info/",
+        "payloadParams": { "idObjectTrack" : "" },
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "Edit object of object track",
+        "method": "POST",
+        "route": "/project/well/plot/object-track/object/edit/",
+        "payloadParams": { "idObjectTrack" : "" },
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "Delete object of object track",
+        "method": "DELETE",
+        "route": "/project/well/plot/object-track/object/delete/",
+        "payloadParams": { "idObjectTrack" : "" },
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "Get all images of a user",
+        "method": "POST",
+        "route": "/image-list",
+        "payloadParams": {},
+        "samplePayload": {},
+        "note": "",
+        "response": {"code": 200,"reason":"Successful","content": ["hoang9bd368a40756ea5e690a4fae9a198b66linux.jpg","hoangc54c2f6cb6ddf5a1d269718ec4b6fb51linux.jpg",       "hoangdcd571845f97d46f31ab41c5e811bcb2linux.jpg",       "hoange7e0e97cb2d57ce1322298fdcf706789linux.jpg",       "hoangf8cef15a24cd9b45c5550b4e206e3c21linux.jpg"    ]}
+    },
+    {
+        "name": "Get all overlay line",
+        "method": "POST",
+        "route": "/project/well/cross-plot/overlay-line/all",
+        "payloadParams": {},
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "Get overlay line by 2 curve",
+        "method": "POST",
+        "route": "/project/well/cross-plot/overlay-line/list",
+        "payloadParams": {"idCurveX" : 1,"idCurveY" : 2},
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "Get info overlay line",
+        "method": "POST",
+        "route": "/project/well/cross-plot/overlay-line/info",
+        "payloadParams": { "idOverlayLine": 37 },
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "Add/Update axis colors",
+        "method": "POST",
+        "route": "/project/well/cross-plot/axis-color/save",
+        "payloadParams": { "name" : "test-1", "content" : "{name:hoang}" },
+        "samplePayload": {},
+        "note": "Nhớ parse content ra string trước khi up lênname : tạo mới khi name chưa tồn tại, update nếu name đã tồn tại",
+        "response": {}
+    },
+    {
+        "name": "List axis colors",
+        "method": "POST",
+        "route": "/project/well/cross-plot/axis-color/all",
+        "payloadParams": {},
+        "samplePayload": {},
+        "note": "",
+        "response": {"code": 200,"reason":"Successful","content": [{"name":"test","content":"{name:'hoang',data:'abc'}"},{"name":"hoang","content":"{name:'hoang',data:'abc'}"}]}
+    },
+    {
+        "name": "Clear axis colors",
+        "method": "POST",
+        "route": "/project/well/cross-plot/axis-color/clear",
+        "payloadParams": {},
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "create group",
+        "method": "POST",
+        "route": "/project/group/new",
+        "payloadParams": { "idProject": "" , "name": "", "idParent": "" },
+        "samplePayload":{},
+         "note": "",
+        "response": {"code": 200,"reason":"Create new group success","content": {"idParent": 0,"type":"Well","idGroup": 2 ,"idProject": 2,"name":"myGroup","updatedAt":"2017-11-22T07:43:39.917Z","createdAt":"2017-11-22T07:43:39.917Z"}}
+       
+    },
+    {
+        "name": "edit group",
+        "method": "POST",
+        "route": "/project/group/edit",
+        "payloadParams": { "idGroup": "" },
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "delete group",
+        "method": "POST",
+        "route": "/project/group/delete",
+        "payloadParams": { "idGroup": "" },
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "info group",
+        "method": "POST",
+        "route": "/project/group/info",
+        "payloadParams": { "idGroup": "" },
+        "samplePayload": {},
+         "note": "",
+        "response": {"code": 200,"reason":"Get group info success","content": {"idGroup": 2,"idParent": 0,"name":"myGroup","wells": [{"idWell": 29,"name":"W4"}]}}
+       
+    },
+    {
+        "name": "create new selection tool",
+        "method": "POST",
+        "route": "/project/well/combined-box/selection-tool/new",
+        "payloadParams": {},
+        "samplePayload": {"idCombinedBox" : 1,"data": [{"startDepth":123,"stopDepth":132},{"startDepth":123,"stopDepth":132}],"idCombinedBoxTool": 1},
+        "note": "",
+        "response": {"code": 200,"reason":"Successfull","content": {"data": [{"startDepth": 123,"stopDepth": 132},{"startDepth": 123,"stopDepth": 132}],"idSelectionTool": 2,"idCombinedBox": 1,"idCombinedBoxTool": 1,"updatedAt":"2018-02-26T04:42:14.444Z","createdAt":"2018-02-26T04:42:14.444Z"}}
+    
+    },
+    {
+        "name": "info selection tool",
+        "method": "POST",
+        "route": "/project/well/combined-box/selection-tool/info",
+        "payloadParams": { "idSelectionTool": "" },
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "delete selection tool",
+        "method": "DELETE",
+        "route": "/project/well/combined-box/selection-tool/delete",
+        "payloadParams": { "idSelectionTool": "" },
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "edit selection tool",
+        "method": "POST",
+        "route": "/project/well/combined-box/selection-tool/edit",
+        "payloadParams": {},
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "new combined box",
+        "method": "POST",
+        "route": "/project/well/combined-box/new",
+        "payloadParams": { "name": "String", "selection": "String", "idWell": "int", "idLogPlots": "array", "idCrossPlots": "array", "idHistogram": "array" },
+        "samplePayload": {"idWell" : 2,"name":"testCombinedBox1","selection" :"","idLogPlots" : [4],"idCrossPlots" : [4],"idHistograms" : [4] },
+        "note": "array là mảng các id logplot,crossplot,histogram. idLogPlots,idCrossPlot,idHistogram can be mull",
+        "response": {"code": 200,"reason":"Successful","content": {"idCombinedBox": 25,"idWell": 2,"name":"testCombinedBox1","selection":"","updatedAt":"2017-12-01T04:41:49.999Z","createdAt":"2017-12-01T04:41:49.999Z"}}
+        
+    },
+    {
+        "name": "info combined box",
+        "method": "POST",
+        "route": "/project/well/combined-box/info",
+        "payloadParams": { "idCombinedBox": "" },
+        "samplePayload": {},
+        "note": "",
+        "response": {"code": 200,"reason":"Successful","content": {"idCombinedBox": "25","name":"testCombinedBox11","selection":"","createdAt":"2017-12-01T04:41:49.000Z","updatedAt":"2017-12-01T04:41:49.000Z","idWell": 2,"plots": [],"crossplots": [],"histograms": []}}
+    },
+    {
+        "name": "edit combined box",
+        "method": "POST",
+        "route": "/project/well/combined-box/edit",
+        "payloadParams": {},
+        "samplePayload": {"idWell" : 2,"name":"testCombinedBox1","selection" :"","idCombinedBox": 1,"idLogPlots" : [4],"idCrossPlots" : [4],"idHistograms" : [4]},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "delete combined box",
+        "method": "DELETE",
+        "route": "/project/well/combined-box/delete",
+        "payloadParams": { "idCombinedBox": "" },
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "new combined box tool",
+        "method": "POST",
+        "route": "/project/well/combined-box/tool/new",
+        "payloadParams": {},
+        "samplePayload": {"name" :"myTool","color" :"day la color","idCombinedBox" : 23 },
+        "note": "",
+        "response": { "code": 200,"reason":"Successful","content": {"idCombinedBoxTool": 1,"name":"myTool","color":"day la color","idCombinedBox": 23,"updatedAt":"2017-12-01T04:49:25.459Z","createdAt":"2017-12-01T04:49:25.459Z"}}
+       
+    },
+    {
+        "name": "info combined box tool",
+        "method": "POST",
+        "route": "/project/well/combined-box/tool/info",
+        "payloadParams": { "idCombinedBoxTool": "" },
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "edit combined box tool",
+        "method": "POST",
+        "route": "/project/well/combined-box/tool/edit",
+        "payloadParams": {},
+        "samplePayload": {"name" :"myTool","color" :"sua color","idCombinedBox" : 23},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "delete combined box tool",
+        "method": "DELETE",
+        "route": "/project/well/combined-box/tool/delete",
+        "payloadParams": { "idCombinedBoxTool": "" },
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "list combined box tool",
+        "method": "POST",
+        "route": "/project/well/combined-box/tool/list",
+        "payloadParams": {},
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "get all from dusbin",
+        "method": "POST",
+        "route": "/dustbin",
+        "payloadParams": {},
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "delete permanently an object",
+        "method": "POST",
+        "route": "/dustbin/delete",
+        "payloadParams": { "idObject" : "int", "type": "String" },
+        "samplePayload": { "idObject" : 1, "type": "well" },
+        "note": "type = well,dataset,curve,plotplot,crossplot,histogram",
+        "response": {}
+    },
+    {
+        "name": "restore an object",
+        "method": "POST",
+        "route": "/dustbin/restore",
+        "payloadParams": { "idObject" : "int", "type": "String" },
+        "samplePayload": { "idObject" : 1, "type": "well" },
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "import form inventory",
+        "method": "POST",
+        "route": "/inventory/import/curve",
+        "payloadParams": { "Curve" : "Objects" },
+        "samplePayload": [{"idInvCurve" : 1, "name" :"DTCO3", "unit" :"US/F", "idDesDataset" : 1}, {"idInvCurve" : 2, "name" :"ECGR", "unit" :"US/F", "idDesDataset" : 1}],
+        "note": "idInvCurve: idCurve của inventory,",
+        "response": "list curve được create/update"
+    },
+    {
+        "name": "import form inventory",
+        "method": "POSt",
+        "route": "/inventory/import/dataset",
+        "payloadParams": { "Dataset": "Objects" },
+        "samplePayload": [{"name" :"hoang","idDesWell" : 1,"curves" : [{"idInvCurve" : 1,"name" :"DTCO3","unit" :"US/F"},{"idInvCurve" : 2,"name" :"ECGR","unit" :"US/F"}]}],
+        "note": "",
+        "response": "nt"
+    },
+    {
+        "name": "create new workflow",
+        "method": "POST",
+        "route": "/workflow/new",
+        "payloadParams": { "name": "", "content": "JSON/JSON String", "idWorkflowSpec": "" },
+        "samplePayload": {"name":"Test","content" : {"a": 1,"b": 2},"idWorkflowSpec": 7 },
+        "note": "",
+        "response": {"code": 200,"reason":"Successfull","content": {"content": {"a": 1,"b": 2},"idWorkflow": 1,"name":"Test","idWorkflowSpec": 7,"updatedAt":"2018-02-23T04:08:36.037Z","createdAt":"2018-02-23T04:08:36.037Z"}}
+    },
+    {
+        "name": "list workflow",
+        "method": "POST",
+        "route": "/workflow/list",
+        "payloadParams": {},
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "info workflow",
+        "method": "POST",
+        "route": "/workflow/info",
+        "payloadParams": { "idWorkflow": "" },
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "edit workflow",
+        "method": "POST",
+        "route": "/workflow/edit",
+        "payloadParams": {},
+        "samplePayload": {"content": {"a": 1,"b": 2,"c": 3},"idWorkflow": 1,"name":"Test","idWorkflowSpec": 6},
+        "note": "",
+        "response": {"code": 200,"reason":"Successfull","content": {"content": {"a": 1,"b": 2,"c": 3},"idWorkflow": 1,"name":"Test","description": "null","createdAt":"2018-02-23T04:08:36.000Z","updatedAt":"2018-02-23T04:09:32.000Z","idWorkflowSpec": 6}}
+    },
+    {
+        "name": "delete workflow",
+        "method": "DELETE",
+        "route": "/workflow/delete",
+        "payloadParams": { "idWorkflow": "" },
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "create new workflow spec",
+        "method": "POST",
+        "route": "/workflow-spec/new",
+        "payloadParams": {"name": "", "content": "JSON / JSON String" },
+        "samplePayload": {"name":"test","content": {"a": 123, "b" :456}},
+        "note": "",
+        "response": {"code": 200,"reason":"Successfull","content": {"content": {"a": 123,"b": 456},"idWorkflowSpec": 4,"name":"test","updatedAt":"2018-02-23T03:53:04.491Z","createdAt":"2018-02-23T03:53:04.491Z"}}
+    },
+    {
+        "name": "list workflow spec",
+        "method": "POST",
+        "route": "/workflow-spec/list",
+        "payloadParams": {},
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "info workflow spec",
+        "method": "POST",
+        "route": "/workflow-spec/info",
+        "payloadParams": {"idWorkflowSpec": "Number" },
+        "samplePayload": {"idWorkflowSpec": 7},
+        "note": "",
+        "response": {"code": 200,"reason":"Successfull","content": {"content": {"a": 123,"b": 456},"idWorkflowSpec": 7,"name":"test","description": "null","createdAt":"2018-02-23T04:00:21.000Z","updatedAt":"2018-02-23T04:00:21.000Z","workflows": []}}
+    },
+    {
+        "name": "edit workflow spec",
+        "method": "POST",
+        "route": "/workflow-spec/edit",
+        "payloadParams": {"content": "JSON / JSON String" },
+        "samplePayload": {"content": {"a": 123,"b": 456,"c": 456},"idWorkflowSpec": 7,"name":"test","description": "null"},
+        "note": "",
+        "response": {"code": 200,"reason":"Successfull","content": {"content": {"a": 123,"b": 456,"c": 456},"idWorkflowSpec": 7,"name":"test","description": "null","createdAt":"2018-02-23T04:00:21.000Z","updatedAt":"2018-02-23T04:03:55.000Z"}}
+    },
+    {
+        "name": "delete workflow spec",
+        "method": "DELETE",
+        "route": "/workflow-spec/delete",
+        "payloadParams": { "idWorflowSpec": "" },
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "Create new zone",
+        "method": "POST",
+        "route": "/zone-template/new",
+        "payloadParams": { "template":"temp_ex_1",   "name":"zone_ex_1",   "background":"green",   "foreground":"white",   "pattern":"basement" },
+        "samplePayload": {},
+        "note": "Yêu cầu phải có các zone con mới cho tạo zone template",
+        "response": {}
+    },
+    {
+        "name": "list all zone template",
+        "method": "POST",
+        "route": "/zone-template/list",
+        "payloadParams": {},
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "list zone by zone template",
+        "method": "POST",
+        "route": "/zone-template/all",
+        "payloadParams": { "teamplate": "String" },
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "import zone template",
+        "method": "POST",
+        "route": "/zone-template/import",
+        "payloadParams": {},
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "export zone template",
+        "method": "POST",
+        "route": "/zone-template/export",
+        "payloadParams": {},
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "delete zone teamplate",
+        "method": "POST",
+        "route": "/zone-template/delete",
+        "payloadParams": { "idZoneTemplate": "" },
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "edit a zone template",
+        "method": "POST",
+        "route": "/zone-template/edit",
+        "payloadParams": {},
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "pattern list",
+        "method": "POST",
+        "route": "/pattern/list",
+        "payloadParams": {},
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "create new flow",
+        "method": "POST",
+        "route": "/project/flow/new",
+        "payloadParams": {"idProject": "", "name": "", "content": "", "description": "" },
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "info flow",
+        "method": "POST",
+        "route": "/project/flow/info",
+        "payloadParams": { "idFlow": "" },
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "edit flow",
+        "method": "POST",
+        "route": "/project/flow/edit",
+        "payloadParams": {"idProject": "", "name": "", "content": "", "description": "" },
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "delete flow",
+        "method": "DELETE",
+        "route": "/project/flow/delete",
+        "payloadParams": { "idFlow": "" },
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "list flow",
+        "method": "POST",
+        "route": "/project/flow/list",
+        "payloadParams": { "IdProject": "" },
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "create task",
+        "method": "POST",
+        "route": "/project/flow/task/new",
+        "payloadParams": {"idFlow" : "", "name": "", "content": "", "description": "", "idTaskSpec": "" },
+        "samplePayload": {},
+        "note": "idTaskSpec can be null",
+        "response": {}
+    },
+    {
+        "name": "info task",
+        "method": "POST",
+        "route": "/project/flow/task/info",
+        "payloadParams": { "idTask": "" },
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "edit task",
+        "method": "POST",
+        "route": "/project/flow/task/edit",
+        "payloadParams": {"idFlow" : "", "name": "", "content": "", "description": "", "idTaskSpec": "" },
+        "samplePayload": {},
+        "note": "idTaskSpec can be null",
+        "response": {}
+    },
+    {
+        "name": "delete task",
+        "method": "DELETE",
+        "route": "/project/flow/task/delete",
+        "payloadParams": { "idTask": "" },
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "list task",
+        "method": "POST",
+        "route": "/project/flow/task/list",
+        "payloadParams": {"idFlow" : ""},
+        "samplePayload": {},
+        "note": "",
+        "response": {}
+    },
+    {
+        "name": "create new marker template",
+        "method": "POST",
+        "route": "/marker-template/new",
+        "payloadParams": {"template":"","name":"","color":"","lineStyle":"","description":""},
+        "samplePayload": {},
+        "response": {}
+        
+    },
+    {
+        "name": "list all marker template",
+        "method": "POST",
+        "route": "/marker-template/list",
+        "payloadParams": {},
+        "samplePayload": {},
+        "response": {}
+        
+    },
+    {
+        "name": "delete marker template",
+        "method": "DELETE",
+        "route": "/marker-template/delete",
+        "payloadParams": {"idMarkerTemplate":""},
+        "samplePayload": {},
+        "response": {}
+        
+    },
+    {
+        "name": "edit a marker template",
+        "method": "POST",
+        "route": "/marker-template/edit",
+        "payloadParams": {},
+        "samplePayload": {},
+        "response": {}
+        
+    },
+    {
+        "name": "create new marker set",
+        "method": "POST",
+        "route": "/project/well/marker-set/new",
+        "payloadParams": {"name":"","idWell":"","template(optinal)":""},
+        "samplePayload": {},
+        "response": {}
+        
+    },
+    {
+        "name": "info marker set",
+        "method": "POST",
+        "route": "/project/well/marker-set/info",
+        "payloadParams": {"idMarkerSet":""},
+        "samplePayload": {},
+        "response": {}
+        
+    },
+    {
+        "name": "list marker set",
+        "method": "POST",
+        "route": "/project/well/marker-set/list",
+        "payloadParams": {"idWell":""},
+        "samplePayload": {},
+        "response": {}
+        
+    },
+    {
+        "name": "delete marker set",
+        "method": "DELETE",
+        "route": "/project/well/marker-set/delete",
+        "payloadParams": {"idMarkerSet":""},
+        "samplePayload": {},
+        "response": {}
+        
+    },
+    {
+        "name": "edit marker set",
+        "method": "POST",
+        "route": "/project/well/marker-set/edit",
+        "payloadParams": {},
+        "samplePayload": {},
+        "response": {}
+        
+    },
+    {
+        "name": "create new marker",
+        "method": "POST",
+        "route": "/project/well/marker-set/marker/new",
+        "payloadParams": {"depth":"","idMarkerTemplate":"","idMarkerSet":""},
+        "samplePayload": {},
+        "response": {}
+        
+    },
+    {
+        "name": "info marker",
+        "method": "POST",
+        "route": "/project/well/marker-set/marker/info",
+        "payloadParams": {"idMarker":""},
+        "samplePayload": {},
+        "response": {}
+        
+    },
+    {
+        "name": "delete marker",
+        "method": "DELETE",
+        "route": "/project/well/marker-set/marker/delete",
+        "payloadParams": {"idMarker":""},
+        "samplePayload": {},
+        "response": {}
+        
+    },
+    {
+        "name": "edit marker",
+        "method": "POST",
+        "route": "/project/well/marker-set/marker/edit",
+        "payloadParams": {"depth":""},
+        "samplePayload": {},
+        "response": {}
+    }
+]

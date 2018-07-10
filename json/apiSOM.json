@@ -1,0 +1,32 @@
+[
+    {
+        "response": "",
+        "STT": "1",
+        "name": "Creating and training the SOM model",
+        "method": "POST",
+        "route": "/api/v1.0/lvq/train",
+        "payloadParams": {"model_id": "String","params": {"n_rows": "int","n_cols": "int","learning_rate": "double","decay_rate": "double","neighborhood": "'bubble'||'gaussian'||'None'","sigma": "double","sigma_decay_rate": "double","weights_initialization": "'random'||'sample'||'pca'","num_iteration": "int","epoch_size": "int"},"train": {"data": "2D array","target": "1D array"}},
+        "samplePayload": {"model_id": "model-1","params": {"n_rows": 9,"n_cols": 9,"learning_rate": 0.5,"decay_rate": 1,"neighborhood": "bubble","sigma": 2,"sigma_decay_rate": 1,                "weights_initialization": "random",                "num_iteration": 10000,"epoch_size": 4000},"train": {"data": [[1, 2, 3], [2, 3, 4]],"target": [1, 2, 3]}},
+        "note": ""
+    },
+    {
+        "response": "",
+        "STT": "2",
+        "name": "Predicting the result using trained model",
+        "method": "POST",
+        "route": "/api/v1.0/lvq/predict",
+        "payloadParams": {"model_id": "String","data": "2D array"},
+        "samplePayload": {"model_id": "model-1","data": [[1, 2, 3], [2, 3, 4]]},
+        "note": ""
+    },
+    {
+        "response": "",
+        "STT": "2",
+        "name": "abc",
+        "method": "POST",
+        "route": "/api/v1.0/lvq/predict",
+        "payloadParams": {"model_id": "String","data": "2D array"},
+        "samplePayload": {"model_id": "model-1","data": [[1, 2, 3], [2, 3, 4]]},
+        "note": "abc\ncde\n\nwsx"
+    }
+]

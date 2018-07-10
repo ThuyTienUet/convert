@@ -1,0 +1,272 @@
+[
+    {
+        "note": "errResponse: {'code': 400,'reason': 'USER_EXISTED','content': {}}",
+        "STT": "1",
+        "name": "Register",
+        "method": "POST",
+        "route": "/register",
+        "payloadParams": {"username": "String", "password": "String", "fullname": "String", "email": "String", "captcha": "String" },
+        "response": {"code": 200,"reason": "Success","content": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFhYSIsInBhc3N3b3JkIjoiODI3Y2NiMGVlYThhNzA2YzRjMzRhMTY4OTFmODRlN2IiLCJlbWFpbCI6ImFAZ21haWwuY29tIiwiZnVsbG5hbWUiOiJCdWkgRGFuZyBIb2FuZyIsImNhcHRjaGEiOiI1NDg3OCIsImlhdCI6MTUxMjQ1ODE4NywiZXhwIjoxNTEyNDYxNzg3fQ.Bw6JffRqea8O6AB5H_2wlf1dyU0SjqdHKxs4COcN9zU"},
+        "errResponse": {"code": 401,"reason": "WRONG_CAPTCHA ","content": {}}
+    },
+    {
+        "note": "Content là jwt token sẽ hết hạn trong sau 24h, mọi request đến main service đều yêu cầu kèm token này, nếu không main service sẽ response 401 not authenticate.jwt token có thể thêm vào request header (Authorization: token), hoặc body (token: token) với post method hoặc (/link?token=token) với get method. Hiện tại đang dùng với cách 1.",
+        "STT": "2",
+        "name": "Login",
+        "method": "POST",
+        "route": "/login",
+        "payloadParams": {"username": "String", "password": "String" },
+        "response": {"code": 200,"reason": "Successful","content": {"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRoYW5obmsiLCJwYXNzd29yZCI6ImM0Y2E0MjM4YTBiOTIzODIwZGNjNTA5YTZmNzU4NDliIiwiY2FwdGNoYSI6IjE1ODIwIiwicmVmcmVzaF90b2tlbiI6Ik5WR3lNbmtacmtNMXpyWnBLcGtvcG1YRTlXaGFiOEV1cnozMFRHZjRPdm9DZnVRcEx2N0JGeVdKMWpQT01SM2UiLCJpYXQiOjE1MTU0MDAwODcsImV4cCI6MTUxNTU3Mjg4N30.t1xaS85UpmTib1fC9-0Akhf2E04-hoXq6S8LPovcJ6c",        "refresh_token": "B2ANMtlTdLcFOwYKRLnQJUCXmU7PhUkys3LsGu2A2NWjqUakpo2fJdgJRdNob1Zl"    }},
+        "errResponse": { "reason": "USER_NOT_EXISTS || WRONG_PASSWORD" }
+    },
+    {
+        "note": "",
+        "STT": "3",
+        "name": "refresh-token",
+        "method": "POST",
+        "route": "/refresh-token",
+        "payloadParams": {"refresh_token" : "String" },
+        "response": {"code": 200,"reason": "Successfull","content": {"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRoYW5obmsiLCJpYXQiOjE1MTU0MDAxMTksImV4cCI6MTUxNTQ4NjUxOX0.LHKEOdA8vwlDoj67of43YzOHSFbvFtOJbYcTfnK9E9s",        "refresh_token": "fjABNZKXapu8DZcit3cQUrC17I66TdqJrbM76msYmABPdNwqTjQ3RJRcrjoGKrpb"    }},
+        "errResponse": {}
+    },
+    {
+        "note": "",
+        "STT": "4",
+        "name": "create company",
+        "method": "POST",
+        "route": "/company/new",
+        "payloadParams": {"name": "", "description": "", "location":  "String" },
+        "response": {},
+        "errResponse": {}
+    },
+    {
+        "note": "",
+        "STT": "5",
+        "name": "info company",
+        "method": "POST",
+        "route": "/company/info",
+        "payloadParams": { "idCompany": ""},
+        "response": {},
+        "errResponse": {}
+    },
+    {
+        "note": "",
+        "STT": "6",
+        "name": "delete company",
+        "method": "POST",
+        "route": "/company/delete",
+        "payloadParams": { "idCompany": ""},
+        "response": {},
+        "errResponse": {}
+    },
+    {
+        "note": "",
+        "STT": "7",
+        "name": "edit company",
+        "method": "POST",
+        "route": "/company/edit",
+        "payloadParams": { "name": "", "description": "", "location": "String", "idCompany":"" },
+        "response": {},
+        "errResponse": {}
+    },
+    {
+        "note": "",
+        "STT": "8",
+        "name": "list company",
+        "method": "POST",
+        "route": "/company/list",
+        "payloadParams": {},
+        "response": {},
+        "errResponse": {}
+    },
+    {
+        "note": "",
+        "STT": "9",
+        "name": "create group",
+        "method": "POST",
+        "route": "/group/new",
+        "payloadParams":  { "name": "", "description": "",  "idCompany":"" },
+        "response": {},
+        "errResponse": {}
+    },
+    {
+        "note": "",
+        "STT": "10",
+        "name": "list group",
+        "method": "POST",
+        "route": "/group/list",
+        "payloadParams": {},
+        "response": {},
+        "errResponse": {}
+    },
+    {
+        "note": "",
+        "STT": "11",
+        "name": "delete group",
+        "method": "POST",
+        "route": "/group/delete",
+        "payloadParams": {"idGroup": ""},
+        "response": {},
+        "errResponse": {}
+    },
+    {
+        "note": "",
+        "STT": "12",
+        "name": "add user to group",
+        "method": "POST",
+        "route": "/group/add-user",
+        "payloadParams": {"idGroup": "", "idUser": "" },
+        "response": {},
+        "errResponse": {}
+    },
+    {
+        "note": "",
+        "STT": "13",
+        "name": "remove user from group",
+        "method": "POST",
+        "route": "/group/remove-user",
+        "payloadParams": {"idGroup": "", "idUser": "" },
+        "response": {},
+        "errResponse": {}
+    },
+    {
+        "note": "",
+        "STT": "14",
+        "name": "get project permission of group",
+        "method": "POST",
+        "route": "/group/project-permission",
+        "payloadParams": {"project_name": "", "idGroup": "" },
+        "response": {},
+        "errResponse": {}
+    },
+    {
+        "note": "",
+        "STT": "15",
+        "name": "update project permission for group",
+        "method": "POST",
+        "route": "/group/update-project-permission",
+        "payloadParams": {"project_name": "", "idGroup": "" },
+        "response": {},
+        "errResponse": {}
+    },
+    {
+        "note": "",
+        "STT": "16",
+        "name": "new shared project",
+        "method": "POST",
+        "route": "/shared-project/new",
+        "payloadParams": {"project_name": "" },
+        "response": {},
+        "errResponse": {}
+    },
+    {
+        "note": "",
+        "STT": "17",
+        "name": "list shared project",
+        "method": "POST",
+        "route": "/shared-project/list",
+        "payloadParams": {"username": ""},
+        "response": {},
+        "errResponse": {}
+    },
+    {
+        "note": "",
+        "STT": "18",
+        "name": "add shared project to group",
+        "method": "POST",
+        "route": "/shared-project/add-to-group",
+        "payloadParams": {"type": "add || remove", "idSharedProject": "", "idGroup": "" },
+        "response": {},
+        "errResponse": {}
+    },
+    {
+        "note": "",
+        "STT": "19",
+        "name": "list user",
+        "method": "POST",
+        "route": "/user/list",
+        "payloadParams": {},
+        "response": {},
+        "errResponse": {}
+    },
+    {
+        "note": "",
+        "STT": "20",
+        "name": "new user",
+        "method": "POST",
+        "route": "/user/new",
+        "payloadParams": {"username": "", "password": "", "status": "", "role": "number", "email": "", "fullname": ""},
+        "response": {},
+        "errResponse": {}
+    },
+    {
+        "note": "",
+        "STT": "21",
+        "name": "info user",
+        "method": "POST",
+        "route": "/user/info",
+        "payloadParams": {"idUser": "" },
+        "response": {},
+        "errResponse": {}
+    },
+    {
+        "note": "",
+        "STT": "22",
+        "name": "edit user",
+        "method": "POST",
+        "route": "/user/edit",
+        "payloadParams": {"username": "", "password": "", "status": "", "role": "number", "email": "", "fullname": ""},
+        "response": {},
+        "errResponse": {}
+    },
+    {
+        "note": "",
+        "STT": "23",
+        "name": "delete user",
+        "method": "POST",
+        "route": "/user/delete",
+        "payloadParams": {"idUser": "" },
+        "response": {},
+        "errResponse": {}
+    },
+    {
+        "note": "",
+        "STT": "24",
+        "name": "change user status",
+        "method": "POST",
+        "route": "/user/change-status",
+        "payloadParams": { "isUser": "", "status": "" },
+        "response": {},
+        "errResponse": {}
+    },
+    {
+        "note": "",
+        "STT": "25",
+        "name": "drop user database",
+        "method": "POST",
+        "route": "/user/dropDb",
+        "payloadParams": {},
+        "response": {},
+        "errResponse": {}
+    },
+    {
+        "note": "",
+        "STT": "26",
+        "name": "get user permission",
+        "method": "POST",
+        "route": "/user/get-permission",
+        "payloadParams": {"username": "", "project_name": ""},
+        "response": {},
+        "errResponse": {}
+    },
+    {
+        "note": "",
+        "STT": "27",
+        "name": "force user logout",
+        "method": "POST",
+        "route": "/user/force-log-out",
+        "payloadParams": {"idUser": "" },
+        "response": {},
+        "errResponse": {}
+    }
+]

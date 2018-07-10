@@ -1,0 +1,29 @@
+[
+    {
+        "note": "",
+        "name": "Info conversation",
+        "method": "POST",
+        "route": "/conversation",
+        "payloadParams": {"name": "String"},
+        "samplePayload": {"name": "chat"},
+        "response": ""
+    },
+    {
+        "note": "- content vs image/file là path. type vs image/file là 'image'/'file' nếu k là 'text'",
+        "name": "Save message",
+        "method": "POST",
+        "route": "/message/new",
+        "payloadParams": {"content": "String", "type": "String", "idSender": "Int", "idConversation": "Int"},
+        "samplePayload": {"content": "hello", "type": "text", "idSender": 1, "idConversation": 1},
+        "response": ""
+    },
+    {
+        "note": "- name là tên của conversation",
+        "name": "Upload image/file",
+        "method": "POST",
+        "route": "/upload",
+        "payloadParams": {"file": "File","fields": "JSON"},
+        "samplePayload": {"file": "file*", "fields": { "name": "chat" }},
+        "response": ""
+    }
+]
