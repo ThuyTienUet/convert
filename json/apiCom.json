@@ -9,7 +9,7 @@
         "response": ""
     },
     {
-        "note": "- content vs image/file là path. type vs image/file là 'image'/'file' nếu k là 'text'",
+        "note": "- content vs image/file là path. \n- type vs image/file là 'image'/'file' nếu k là 'text'",
         "name": "Save message",
         "method": "POST",
         "route": "/message/new",

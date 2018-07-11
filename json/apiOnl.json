@@ -9,7 +9,7 @@
         "name": "login"
     },
     {
-        "note": "override = true: override existing well if duplicate welloverride = null: create new well if duplicate well",
+        "note": "override = true: override existing well if duplicate well\noverride = null: create new well if duplicate well",
         "route": "/upload/lases",
         "method": "POST",
         "payloadParams": {"token": "", "file": "", "override": "" },

@@ -10,7 +10,7 @@
         "errResponse": {"code": 401,"reason": "WRONG_CAPTCHA ","content": {}}
     },
     {
-        "note": "Content là jwt token sẽ hết hạn trong sau 24h, mọi request đến main service đều yêu cầu kèm token này, nếu không main service sẽ response 401 not authenticate.jwt token có thể thêm vào request header (Authorization: token), hoặc body (token: token) với post method hoặc (/link?token=token) với get method. Hiện tại đang dùng với cách 1.",
+        "note": "Content là jwt token sẽ hết hạn trong sau 24h, mọi request đến main service đều yêu cầu kèm token này, nếu không main service sẽ response 401 not authenticate.\njwt token có thể thêm vào request header (Authorization: token), hoặc body (token: token) với post method hoặc (/link?token=token) với get method. Hiện tại đang dùng với cách 1.",
         "STT": "2",
         "name": "Login",
         "method": "POST",
