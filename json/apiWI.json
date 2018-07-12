@@ -259,8 +259,8 @@
         "route": "/poroject/cross-plot/regression-line/new",
         "payloadParams": {    "idCrossplot": "Integer",    "lineStyle": "Object",    "displayLine": "Boolean",    "displayEquation": "Boolean",    "regType": "ENUM('Linear', 'Exponent', 'Powerwer')",    "inverseReg": "Boolean",    "exclude": "Boolean",    "fitX": "Double",    "fitY": "Double",    "polygons": "Array of IdPolygons"},
         "samplePayload": {"idCrossPlot": 1,"lineStyle": {"color": "Blue", "width": 1, "style": []}, "displayLine": true, "displayEquation": true, "regType": "Linear", "inverseReg": false, "exclude": false, "fitX": 12.32, "fitY": 232.232, "polygons": [1,3]},
-        "note": {    "code": 200,    "reason": "Save polygon_regressionLine success",    "content": [        [            {                "createdAt": "2017-09-24T07:45:00.869Z",                "updatedAt": "2017-09-24T07:45:00.869Z",                "idPolygon": 1,                "idRegressionLine": 7            },            {                "createdAt": "2017-09-24T07:45:00.869Z",                "updatedAt": "2017-09-24T07:45:00.869Z",                "idPolygon": 3,                "idRegressionLine": 7            }        ]    ]},
-        "response": {}
+        "response": {    "code": 200,    "reason": "Save polygon_regressionLine success",    "content": [        [            {                "createdAt": "2017-09-24T07:45:00.869Z",                "updatedAt": "2017-09-24T07:45:00.869Z",                "idPolygon": 1,                "idRegressionLine": 7            },            {                "createdAt": "2017-09-24T07:45:00.869Z",                "updatedAt": "2017-09-24T07:45:00.869Z",                "idPolygon": 3,                "idRegressionLine": 7            }        ]    ]},
+        "note": ""
     },
     {
         
@@ -270,8 +270,8 @@
         "route": "/project/cross-plot/axis-color/all",
         "payloadParams": {},
         "samplePayload": {},
-        "note": {    "code": 200,    "reason": "Successful",    "content": [        {            "name": "test",            "content": {"name":"hoang","data":"abc"}        },        {            "name": "hoang",            "content": {"name":"hoang","data":"abc"}        }    ]},
-        "response": {}
+        "response": {    "code": 200,    "reason": "Successful",    "content": [        {            "name": "test",            "content": {"name":"hoang","data":"abc"}        },        {            "name": "hoang",            "content": {"name":"hoang","data":"abc"}        }    ]},
+        "note": ""
     },
     {
         
@@ -1062,8 +1062,8 @@
         "route": "/project/plot/track/annotation/new",
         "payloadParams": {    "text": "String",    "textStyle": "String",    "vAlign": "ENUM('Top','Center','Bottom')",    "hAlign": "ENUM('Left','Center','Right')",    "background": "String",    "fitBounds": "Boolean",    "deviceSpace": "Boolean",    "vertical": "Boolean",    "shadow": "Boolean",    "left": "Double",    "width": "Double",    "top": "Double",    "bottom": "Double",    "idTrack": 1},
         "samplePayload": {    "text": "hihi",    "textStyle": {},    "vAlign": "Center",    "hAlign": "Center",    "background": {},    "fitBounds": true,    "deviceSpace": true,    "vertical": false,    "shadow": false,    "left": 0,    "width": 100,    "top": 0,    "bottom": 0,    "idTrack": 1},
-        "note": {    "code": 200,    "reason": "Create new Annotation success",    "content": {        "idAnnotation": 2,        "text": "hihi",        "textStyle": {},        "vAlign": "Center",        "hAlign": "Center",        "background": {},        "fitBounds": true,        "deviceSpace": true,        "vertical": false,        "shadow": false,        "left": 0,        "width": 100,        "top": 0,        "bottom": 0,        "idTrack": 1,        "updatedAt": "2017-09-22T09:55:31.513Z",        "createdAt": "2017-09-22T09:55:31.513Z"    }},
-        "response": {}
+        "response": {    "code": 200,    "reason": "Create new Annotation success",    "content": {        "idAnnotation": 2,        "text": "hihi",        "textStyle": {},        "vAlign": "Center",        "hAlign": "Center",        "background": {},        "fitBounds": true,        "deviceSpace": true,        "vertical": false,        "shadow": false,        "left": 0,        "width": 100,        "top": 0,        "bottom": 0,        "idTrack": 1,        "updatedAt": "2017-09-22T09:55:31.513Z",        "createdAt": "2017-09-22T09:55:31.513Z"    }},
+        "note": ""
     },
     {
         
@@ -1128,8 +1128,8 @@
         "route": "/project/plot/track/image/new",
         "payloadParams": {        "location" : "/c61f3965/0e48e95d/efd21a5e/e2349db0/linux.jpg",        "top":1146.048,        "bottom":1155.4141979508197,        "width":50,        "left":50,        "idTrack":1},
         "samplePayload": {},
-        "note": {    "code": 200,    "reason": "Create new image success",    "content": {        "idImage": 1,        "location": "/c61f3965/0e48e95d/efd21a5e/e2349db0/linux.jpg",        "top": 1146.048,        "bottom": 1155.4141979508197,        "width": 50,        "left": 50,        "idTrack": 1,        "updatedAt": "2017-09-22T03:06:06.498Z",        "createdAt": "2017-09-22T03:06:06.498Z"    }},
-        "response": {}
+        "response": {    "code": 200,    "reason": "Create new image success",    "content": {        "idImage": 1,        "location": "/c61f3965/0e48e95d/efd21a5e/e2349db0/linux.jpg",        "top": 1146.048,        "bottom": 1155.4141979508197,        "width": 50,        "left": 50,        "idTrack": 1,        "updatedAt": "2017-09-22T03:06:06.498Z",        "createdAt": "2017-09-22T03:06:06.498Z"    }},
+        "note": ""
     },
     {
         
@@ -1304,8 +1304,8 @@
         "route": "/project/well/combined-box/info",
         "payloadParams": {"idCombinedBox": ""},
         "samplePayload": {},
-        "note": {    "code": 200,    "reason": "Successful",    "content": {        "idCombinedBox": 25,        "name": "testCombinedBox11",        "selection": "",        "createdAt": "2017-12-01T04:41:49.000Z",        "updatedAt": "2017-12-01T04:41:49.000Z",        "idWell": 2,        "plots": [],        "crossplots": [],        "histograms": []    }},
-        "response": {}
+        "response": {    "code": 200,    "reason": "Successful",    "content": {        "idCombinedBox": 25,        "name": "testCombinedBox11",        "selection": "",        "createdAt": "2017-12-01T04:41:49.000Z",        "updatedAt": "2017-12-01T04:41:49.000Z",        "idWell": 2,        "plots": [],        "crossplots": [],        "histograms": []    }},
+        "note": ""
     },
     {
         
@@ -1359,8 +1359,8 @@
         "route": "/project/well/combined-box/selection-tool/new",
         "payloadParams": {},
         "samplePayload": {        "idCombinedBox" : 1,        "data": [{"startDepth":123,"stopDepth":132},{"startDepth":123,"stopDepth":132}],        "idCombinedBoxTool": 1},
-        "note": {    "code": 200,    "reason": "Successfull",    "content": {        "data": [            {                "startDepth": 123,                "stopDepth": 132            },            {                "startDepth": 123,                "stopDepth": 132            }        ],        "idSelectionTool": 2,        "idCombinedBox": 1,        "idCombinedBoxTool": 1,        "updatedAt": "2018-02-26T04:42:14.444Z",        "createdAt": "2018-02-26T04:42:14.444Z"    }},
-        "response": {}
+        "response": {    "code": 200,    "reason": "Successfull",    "content": {        "data": [            {                "startDepth": 123,                "stopDepth": 132            },            {                "startDepth": 123,                "stopDepth": 132            }        ],        "idSelectionTool": 2,        "idCombinedBox": 1,        "idCombinedBoxTool": 1,        "updatedAt": "2018-02-26T04:42:14.444Z",        "createdAt": "2018-02-26T04:42:14.444Z"    }},
+        "note": ""
     },
     {
         
@@ -1546,8 +1546,8 @@
         "route": "/project/well/dataset/curve/scale",
         "payloadParams": {"idCurve": ""},
         "samplePayload": {"idCurve":1},
-        "note": {    "code": 200,    "reason": "min max curve success",    "content": {        "minScale": 53.8328,        "maxScale": 137.8071    }},
-        "response": {}
+        "response": {    "code": 200,    "reason": "min max curve success",    "content": {        "minScale": 53.8328,        "maxScale": 137.8071    }},
+        "note":""
     },
     {
         
@@ -1657,7 +1657,7 @@
         "payloadParams": {"list": "ENUM('cross-plot','histogram')" },
         "samplePayload": { "list": "histogram" },
         "response": {    "code": 200,    "reason": "Get list Discrim of cross-plot success",    "content": [        {            "idDiscrim": 1,            "use": true,            "combine": "and",            "func": "",            "value": null,            "createdAt": null,            "updatedAt": null,            "idCrossPlot": 1,            "idHistogram": null,            "idCurveLeft": 1,            "idCurveRight": 1        },        {            "idDiscrim": 4,            "use": false,            "combine": "and",            "func": "<",            "value": null,            "createdAt": "2017-09-11T04:09:13.000Z",            "updatedAt": "2017-09-11T04:09:13.000Z",            "idCrossPlot": 1,            "idHistogram": null,            "idCurveLeft": 1,            "idCurveRight": 2        }    ]},
-        "note": {}
+        "note": ""
     },
     {
         
@@ -1921,7 +1921,7 @@
         "payloadParams": {"idRegressionLine": ""},
         "samplePayload": {},
         "response": {    "code": 200,    "reason": "Get regressionLine info success",    "content": {        "idRegressionLine": 2,        "lineStyle": {"color": "Blue", "width": 1, "style": []},        "displayLine": true,        "displayEquation": true,        "regType": "Linear",        "inverseReg": false,        "exclude": false,        "fitX": 12.12,        "fitY": 122.213,        "createdAt": "2017-09-23T14:33:35.000Z",        "updatedAt": "2017-09-23T14:33:35.000Z",        "idCrossPlot": 1,        "polygons": [            {                "idPolygon": 1,                "lineStyle": "pokwiao",                "display": false,                "points": "adfw",                "createdAt": "2017-09-23T14:31:45.000Z",                "updatedAt": "2017-09-23T14:31:45.000Z",                "idCrossPlot": 1,                "Polygon_RegressionLine": {                    "createdAt": "2017-09-23T14:33:35.000Z",                    "updatedAt": "2017-09-23T14:33:35.000Z",                    "polygonId": 1,                    "regressionLineId": 2                }            },            {                "idPolygon": 3,                "lineStyle": "pokwiao",                "display": false,                "points": "adfw",                "createdAt": "2017-09-23T14:31:54.000Z",                "updatedAt": "2017-09-23T14:31:54.000Z",                "idCrossPlot": 1,                "Polygon_RegressionLine": {                    "createdAt": "2017-09-23T14:33:35.000Z",                    "updatedAt": "2017-09-23T14:33:35.000Z",                    "polygonId": 3,                    "regressionLineId": 2                }            }        ]    }},
-        "note": {}
+        "note": ""
     },
     {
         
@@ -2064,7 +2064,7 @@
         "payloadParams": {"fileName": "String", "content": "Array of Objects"},
         "samplePayload": {},
         "response": {"fileName" : "test_1","content" : [{"x" : 1212,"y" : 1321},{"x" : 3133,"y" : 1311}]},
-        "note": {}
+        "note": ""
     },
     {
         

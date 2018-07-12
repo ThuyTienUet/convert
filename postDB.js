@@ -5,7 +5,9 @@ let async = require("async");
 fs.readFile('./json/apiWI.json', 'utf8', function (err, data) {
   let obj = JSON.parse(data);
   async.forEachOfSeries(obj, (value, key, callback) => {
+    console.log(value, key);
     doPost('http://localhost:3000/apiInsight', value, function (res) {
+      console.log(res);
       callback();
     });   
   }, err => {
