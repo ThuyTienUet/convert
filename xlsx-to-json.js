@@ -1,7 +1,7 @@
 xlsxj = require("xlsx-to-json");
 xlsxj({
-  input: "./xlsx/WIPM-DOGE.xlsx",
-  output: "./json/WIPM.json"
+  input: "./xlsx/API-Well-Insight.xlsx",
+  output: "./json/apiWI.json"
 }, function (err, result) {
   if (err) {
     console.error(err);
