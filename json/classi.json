@@ -1,0 +1,22 @@
+[
+    {
+        "parameter": {"hidden_layer_sizes": {         "type": "array",         "default": [30,30],         "constrant": "number element of list == 2"   },"activation": {         "type": "string",         "default": "sigmoid",         "constrant": "tanh/relu/sigmoid"   },"algorithm": {         "type": "string",         "default": "backprop",         "constrant": "backprop/ evolution"   },"batch_size": {         "type": "int(*)",         "default": null,         "constrant": ">0"   },"learning_rate": {         "type": "double",         "default": 0.001,         "constrant": ">0"   },"num_epochs": {         "type": "int",         "default": 10000,         "constrant": ">0"   },"optimizer": {         "type": "string",         "default": "adamax",         "constrant": "adamax/ sgd/ rmsprop/ adagrad/ adadelta/ adam/ nadam"   },"warm_up": {         "type": "boolean",         "default": true,         "constrant": ""   },"boosting_ops": {         "type": "int",         "default": 0,         "constrant": ">=0"   },"sigma": {         "type": "double",         "default": 0.01,         "constrant": ">0"   },"population": {         "type": "int",         "default": 100,         "constrant": ">0"   }},
+        "name": "NeuralNetClassifier"
+    },
+    {
+        "parameter": {"criterion": {         "type": "string",         "default": "entropy",         "constrant": "entropy/ gini"   },"min_samples_split": {         "type": "int",         "default": 5,         "constrant": ">0"   },"min_impurity_decrease": {         "type": "double",         "default": 0.0003,         "constrant": ">0"   }},
+        "name": "DecisionTreeClassifier"
+    },
+    {
+        "parameter": {"num_neighbors": {         "type": "int",         "default": 100,         "constrant": ">0"   },"p": {         "type": "int",         "default": 1,         "constrant": ">0"   }},
+        "name": "KNN"
+    },
+    {
+        "parameter": {"C": {         "type": "double",         "default": 20,         "constrant": ">=0"   },"max_iter": {         "type": "int",         "default": 10000,         "constrant": ">0"   },"solver": {         "type": "string",         "default": "liblinear",         "constrant": "newton-cg/ lbfgs/ liblinear/ sag/ saga"   }},
+        "name": "LogisticRegression"
+    },
+    {
+        "parameter": {"num_trees": {         "type": "int",         "default": 150,         "constrant": ">0"   },"criterion": {         "type": "string",         "default": "entropy",         "constrant": "entropy/ gini"   },"min_samples_split": {         "type": "int",         "default": 5,         "constrant": ">0"   },"min_impurity_decrease": {         "type": "double",         "default": 0.0003,         "constrant": ">0"   }},
+        "name": "RandomForestClassifier"
+    }
+]

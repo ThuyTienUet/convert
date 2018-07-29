@@ -21,7 +21,7 @@
         "note": "",
         "route": "/user/info",
         "method": "POST",
-        "payloadParams": "token",
+        "payloadParams": {"token": ""},
         "samplePayload": {"token": ""},
         "response": {    "code": 200,    "reason": "GET USER INFOR SUCCESS",    "content": {        "username": "admin",        "password": "c4ca4238a0b923820dcc509a6f75849b",        "islogin": false,        "role": 1,        "createdAt": "2017-11-29T08:02:13.000Z",        "updatedAt": "2017-11-29T08:02:13.000Z"    }},
         "name": "get user info"

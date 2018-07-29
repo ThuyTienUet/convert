@@ -1,0 +1,34 @@
+[
+    {
+        "parameter": {"degree": {          "type": "int",         "default": 2,         "constrant": ">0"   }},
+        "name": "LinearRegression"
+    },
+    {
+        "parameter": {"degree": {         "type": "int",         "default": 2,         "constrant": ">0"   },"alpha": {         "type": "double",         "default": 50,         "constrant": ">0"   },"max_iter": {         "type": "int",         "default": 1000,         "constrant": ">0"   },"tol": {         "type": "double",         "default": 1,         "constrant": ">=0"   }},
+        "name": "Lasso"
+    },
+    {
+        "parameter": {"n_estimators": {         "type": "int",         "default": 300,         "constrant": ">0"   },"max_depth": {         "type": "int(*)",         "default": null,         "constrant": ">0"   },"bootstrap": {         "type": "boolean",         "default": true,         "constrant": ""   },"max_features": {         "type": "int/string(*)",         "default": "log2",         "constrant": ">0/'auto'/'sqrt'/'log2'/null"   }},
+        "name": "RandomForestRegressor"
+    },
+    {
+        "parameter": {"degree": {         "type": "int",         "default": 2,         "constrant": ">0"   },"kemel": {         "type": "linear",         "default": "string",         "constrant": "rbf/linear/poly/sigmoid"   },"gamme": {         "type": "double",         "default": 0.01,         "constrant": ">=0"   },"C": {         "type": "double",         "default": 1,         "constrant": ">=0"   },"tol": {         "type": "double",         "default": null,         "constrant": ">=0"   },"max_iter": {         "type": "int",         "default": -1,         "constrant": ">=-2"   }},
+        "name": "SupportVectorMachine"
+    },
+    {
+        "parameter": {"n_estimators": {         "type": "int",         "default": 300,         "constrant": ">0"   },"max_depth": {         "type": "int",         "default": 60,         "constrant": ">0"   },"booster": {         "type": "string",         "default": "gbtree",         "constrant": "gbtree/gblinear/dart"   },"gamma": {         "type": "double",         "default": 0,         "constrant": ">=0"   },"reg_alpha": {         "type": "double",         "default": 0,         "constrant": ">=0"   },"reg_lambda": {         "type": "double",         "default": 1,         "constrant": ">=0"   }},
+        "name": "XGBoost"
+    },
+    {
+        "parameter": {"solver": {         "type": "string",         "default": "lbfgs",         "constrant": "adam/sgb/lbfgs/cg/evol/basinhopping"   },"max_iter": {         "type": "int",         "default": 200,         "constrant": ">0"   },"activation": {         "type": "string",         "default": "relu",         "constrant": "logistic/relu/tanh/identity"   },"hidden_layer_sizes": {         "type": "array",         "default": [10,10],         "constrant": "number element of list >= 1"   },"alpha": {         "type": "double",         "default": null,         "constrant": ">=0"   },"strategy": {         "type": "string",         "default": "best1bin",         "constrant": "best1bin/best1exp/rand1exp/randtobest1exp/best2exp/rand2exp/randtobest1bin/best2bin/rand2bin/rand1bin"   },"popsize": {         "type": "int",         "default": 5,         "constrant": ">0"   },"bound": {         "type": "array",         "default": [-10,10],         "constrant": "number element of list = 2"   },"recombination": {         "type": "double(*)",         "default": null,         "constrant": "[0,1]"   }},
+        "name": "NeuralNetwork"
+    },
+    {
+        "parameter": {"max_depth": {         "type": "int(*)",         "default": null,         "constrant": ">0"   },"max_features": {         "type": "int(*)",         "default": null,         "constrant": ">0"   },"min_samples_split": {         "type": "int",         "default": 1,         "constrant": ">0"   }},
+        "name": "DecisionTreeRegressor"
+    },
+    {
+        "parameter": {"degree": {         "type": "int",         "default": 2,         "constrant": ">0"   },"epsilon": {         "type": "double",         "default": 1.35,         "constrant": ">0"   },"alpha": {         "type": "double",         "default": null,         "constrant": ">0"   },"tol": {         "type": "double",         "default": null,         "constrant": ">0"   }},
+        "name": "HuberRegressor"
+    }
+]

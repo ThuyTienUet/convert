@@ -12,7 +12,7 @@
     {
         
         "STT": "2",
-        "name": "Clear/Init (Advance)",
+        "name": "Clear Init Advance",
         "method": "POST",
         "route": "/custom-fill/clear",
         "payloadParams": {},
@@ -147,7 +147,7 @@
         "name": "upload image to get url",
         "method": "POST",
         "route": "/image-upload",
-        "payloadParams": {"image.jpg": ""},
+        "payloadParams": {"image": "jpg"},
         "samplePayload": {},
         "response": {    "code": 200,    "reason": "Upload success",    "content": "/c61f3965/0e48e95d/efd21a5e/e2349db0/linux.jpg"},
         "note": ""
@@ -166,7 +166,7 @@
     {
         
         "STT": "16",
-        "name": "import form (inventory)",
+        "name": "import form inventory 1",
         "method": "POST",
         "route": "/inventory/import/dataset",
         "payloadParams": {"datasetList": ["Dataset Objects"]},
@@ -287,7 +287,7 @@
     {
         
         "STT": "27",
-        "name": "Add/Update axis colors",
+        "name": "Add or Update axis colors",
         "method": "POST",
         "route": "/project/cross-plot/axis-color/save",
         "payloadParams": {"name" : "test-1","content" : {"name":"hoang"}},
@@ -697,7 +697,7 @@
         "name": "Info Histogram",
         "method": "POST",
         "route": "/project/histogram/info",
-        "payloadParams": "idHistogram",
+        "payloadParams": {"idHistogram": ""},
         "samplePayload": {},
         "response": {    "code": 200,    "reason": "Successful",    "content": {        "idHistogram": 8,        "histogramTitle": null,        "hardCopyWidth": null,        "hardCopyHeight": null,        "intervalDepthTop": null,        "intervalDepthBottom": null,        "activeZone": "All",        "divisions": 50,        "leftScale": 0,        "rightScale": 0,        "showGaussian": false,        "loga": false,        "showGrid": false,        "flipHorizontal": false,        "lineStyle": "Custom",        "lineColor": "Blue",        "plotType": "Frequency",        "color": "Blue",        "discriminators": null,        "createdAt": "2017-09-08T04:21:38.000Z",        "updatedAt": "2017-09-08T04:21:38.000Z",        "idWell": 1,        "idCurve": null,        "idZoneSet": 1,        "zoneset": {            "idZoneSet": 1,            "name": "hoang",            "createdAt": null,            "updatedAt": null,            "idWell": 1,            "zones": [                {                    "idZone": 1,                    "startDepth": 1000,                    "endDepth": 9000,                    "fill": "",                    "showName": true,                    "name": "",                    "createdAt": null,                    "updatedAt": null,                    "idZoneSet": 1                },                {                    "idZone": 2,                    "startDepth": 1,                    "endDepth": 2,                    "fill": "",                    "showName": true,                    "name": "",                    "createdAt": null,                    "updatedAt": null,                    "idZoneSet": 1                }            ]        },        "well": {            "idWell": 1,            "name": "W4",            "topDepth": "1119.8352",            "bottomDepth": "2184.8064",            "step": "0.1524",            "createdAt": "2017-09-08T03:35:49.000Z",            "updatedAt": "2017-09-08T03:35:49.000Z",            "idProject": 1        }    }},
         "note": ""
@@ -1082,7 +1082,7 @@
         "name": "Sửa Track",
         "method": "POST",
         "route": "/project/plot/track/edit",
-        "payloadParams": "idTrack:NumberidPlot:NumberorderNum: Number,showTitle: boolean,title:String,topJustification: (Left,Right,Center)bottomJustification: (Left,Right,Center)showLabels: BooleanshowValueGrid: Boolean,majorTicks: intminorTicks: intshowDepthGrid: booleanwidth: floatcolor: string,showEndLabels: boolean",
+        "payloadParams": {"idTrack":"Number", "idPlot":"Number", "orderNum": "Number","showTitle": "boolean","title":"String","topJustification": "(Left,Right,Center)", "bottomJustification": "(Left,Right,Center)", "showLabels": "Boolean", "showValueGrid": "Boolean","majorTicks": "int", "minorTicks": "int", "showDepthGrid": "boolean", "width": "float", "color": "string","showEndLabels": "boolean" },
         "samplePayload": {},
         "note": "",
         "response": {}
@@ -1093,7 +1093,7 @@
         "name": "delete image",
         "method": "DELETE",
         "route": "/project/plot/track/image/delete",
-        "payloadParams": "idImage",
+        "payloadParams": {"idImage": ""},
         "samplePayload": {},
         "note": "",
         "response": {}
@@ -1104,9 +1104,9 @@
         "name": "edit image",
         "method": "POST",
         "route": "/project/plot/track/image/edit",
-        "payloadParams": "create payload + idImage",
+        "payloadParams": {},
         "samplePayload": {},
-        "note": "",
+        "note": "params: create payload + idImage",
         "response": {}
     },
     {
@@ -1115,7 +1115,7 @@
         "name": "info image",
         "method": "POST",
         "route": "/project/plot/track/image/info",
-        "payloadParams": "idImage",
+        "payloadParams": {"idImage": ""},
         "samplePayload": {},
         "note": "",
         "response": {}
@@ -1137,7 +1137,7 @@
         "name": "Info Track",
         "method": "POST",
         "route": "/project/plot/track/info",
-        "payloadParams": "idTrack: Number",
+        "payloadParams": {"idTrack": "Number" },
         "samplePayload": {  "idTrack": 1},
         "note": "",
         "response": {}
@@ -1148,7 +1148,7 @@
         "name": "Xóa 1 line",
         "method": "DELETE",
         "route": "/project/plot/track/line/delete",
-        "payloadParams": "idLine",
+        "payloadParams": {"idLine": ""},
         "samplePayload": {  "idLine": 1},
         "note": "",
         "response": {}
@@ -1651,7 +1651,7 @@
     {
         
         "STT": "151",
-        "name": "List Discrim By CrossPlot/Histogram",
+        "name": "List Discrim By CrossPlot or Histogram",
         "method": "POST",
         "route": "/project/well/discrim/list",
         "payloadParams": {"list": "ENUM('cross-plot','histogram')" },
@@ -1841,7 +1841,7 @@
         "name": "create new marker set",
         "method": "POST",
         "route": "/project/well/marker-set/new",
-        "payloadParams": {"name": "","idWell": "", "template(optional)": ""},
+        "payloadParams": {"name": "","idWell": "", "template": ""},
         "samplePayload": {},
         "note": "",
         "response": {}
@@ -2303,8 +2303,8 @@
         "name": "Create new user define line",
         "method": "POST",
         "route": "project/cross-plot/user-define-line/new",
-        "payloadParams": {        "function" : "String",        "lineStyle" : "String",        "displayLine" : "Boolean",        "displayEquation" : "Boolean",        "idCrossPlot" : "Integer"},
-        "samplePayload": {        "function" : "day la function",        "lineStyle" : "day la line style",        "displayLine" : true,        "displayEquation" : true,        "idCrossPlot" : 1},
+        "payloadParams": {        "functions" : "String",        "lineStyle" : "String",        "displayLine" : "Boolean",        "displayEquation" : "Boolean",        "idCrossPlot" : "Integer"},
+        "samplePayload": {        "functions" : "day la function",        "lineStyle" : "day la line style",        "displayLine" : true,        "displayEquation" : true,        "idCrossPlot" : 1},
         "response": {    "code": 200,    "reason": "Create new user define line successfull",    "content": {        "idUserDefineLine": 7,        "function": "day la function",        "lineStyle": "day la line style",        "displayLine": true,        "displayEquation": true,        "createdAt": "2017-09-15T07:32:41.000Z",        "updatedAt": "2017-09-15T07:32:41.000Z",        "idCrossPlot": 1    }},
         "note": ""
     },

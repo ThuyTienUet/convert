@@ -175,7 +175,7 @@
         "name": "add shared project to group",
         "method": "POST",
         "route": "/shared-project/add-to-group",
-        "payloadParams": {"type": "add || remove", "idSharedProject": "", "idGroup": "" },
+        "payloadParams": {"type": "add or remove", "idSharedProject": "", "idGroup": "" },
         "response": {},
         "errResponse": {}
     },

@@ -1,0 +1,6 @@
+[
+    {
+        "parameter": {"dim": {         "type": "int",         "default": 2,         "constrant": ">=2"   },"tau": {         "type": "int",         "default": 1,         "constrant": ">=1"   },"epsilon": {         "type": "double",         "default": 0.001,         "constrant": ">0"   },"lambda": {         "type": "int",         "default": 0,         "constrant": ">=0"   },"percent": {         "type": "double",         "default": 0.2,         "constrant": [0,1]   },"curve_number": {         "type": "int",         "default": 0,         "constrant": ">0"   },"facies_class_number": {         "type": "int",         "default": 0,         "constrant": ">=0"   }},
+        "name": "crp"
+    }
+]
